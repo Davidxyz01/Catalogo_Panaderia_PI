@@ -1,6 +1,5 @@
-/* ========================================== */
+
 /* ESTILOS GENERALES                          */
-/* ========================================== */
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f8f9fa;
@@ -18,9 +17,7 @@ h1, h2, h3 {
     border-color: #bc815f !important;
 }
 
-/* ========================================== */
-/* ESTILOS DEL BANNER (HERO)                  */
-/* ========================================== */
+/* ESTILOS DEL BANNER                 */
 .banner-bg {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/carousel-1.jpg');
     background-size: cover;
@@ -30,9 +27,7 @@ h1, h2, h3 {
     align-items: center;
 }
 
-/* ========================================== */
 /* BOTONES PERSONALIZADOS                     */
-/* ========================================== */
 .btn-primary {
     background-color: #bc815f;
     border-color: #bc815f;
@@ -43,7 +38,6 @@ h1, h2, h3 {
     border-color: #9e6749;
 }
 
-/* ========================================== */
 /* CONFIGURACIÓN DE LAS IMÁGENES DEL CATÁLOGO */
 .card-img-custom {
     object-fit: cover;
