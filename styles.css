@@ -45,7 +45,6 @@ h1, h2, h3 {
 
 /* ========================================== */
 /* CONFIGURACIÓN DE LAS IMÁGENES DEL CATÁLOGO */
-/* ========================================== */
 .card-img-custom {
     object-fit: cover;
     height: 250px;
