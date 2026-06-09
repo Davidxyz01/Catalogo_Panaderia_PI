@@ -1,13 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panaderia</title>
+    <title>Panadería - Catálogo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet"> 
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <p>Hola estoy probando</p>
-    
+    <div class="container-fluid p-0 mb-5">
+        <div class="banner-bg text-light">
+            <div class="container">
+                <div class="row justify-content-start">
+                    <div class="col-lg-8 p-4">
+                        <p class="text-primary text-uppercase fw-bold mb-2">// La Mejor Panadería</p>
+                        <h1 class="display-1 text-light mb-4">Horneamos Con Pasión</h1>
+                        <p class="fs-5 mb-4 pb-3">Descubre la variedad de texturas y sabores que preparamos con dedicación todos los días directamente para ti.</p>
+                        <a href="#catalogo" class="btn btn-primary rounded-pill py-3 px-5">Ver Catálogo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="catalogo" class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+                <p class="text-primary text-uppercase mb-2">// Productos de Panadería</p>
+                <h2 class="display-6 mb-4">Explora las Categorías</h2>
+            </div>
+            
+            <div class="row g-4">
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-white rounded overflow-hidden h-100 shadow-sm border">
+                        <div class="text-center p-4">
+                            <div class="d-inline-block border border-primary rounded-pill px-3 mb-3 text-primary fw-bold">Variedad</div>
+                            <h3 class="mb-3">Pasteles</h3>
+                            <p class="text-muted">Diseños creativos y sabores dulces para celebrar cualquier momento especial.</p>
+                        </div>
+                        <img class="img-fluid w-100 card-img-custom" src="img/product-1.jpg" alt="Pasteles">
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-white rounded overflow-hidden h-100 shadow-sm border">
+                        <div class="text-center p-4">
+                            <div class="d-inline-block border border-primary rounded-pill px-3 mb-3 text-primary fw-bold">Tradicional</div>
+                            <h3 class="mb-3">Pan</h3>
+                            <p class="text-muted">Hecho con masa madre, texturas crujientes y piezas recién salidas del horno.</p>
+                        </div>
+                        <img class="img-fluid w-100 card-img-custom" src="img/product-2.jpg" alt="Pan">
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-white rounded overflow-hidden h-100 shadow-sm border">
+                        <div class="text-center p-4">
+                            <div class="d-inline-block border border-primary rounded-pill px-3 mb-3 text-primary fw-bold">Repostería</div>
+                            <h3 class="mb-3">Galletas</h3>
+                            <p class="text-muted">Pequeños bocados crujientes y suaves perfectos para acompañar con café.</p>
+                        </div>
+                        <img class="img-fluid w-100 card-img-custom" src="img/product-3.jpg" alt="Galletas">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
