@@ -76,7 +76,87 @@
         </div>
     </div>
 
+<div id="catalogo" class="container-xxl py-5">
+        <div class="container">
 
+            <div class="row g-4">
+
+                <!-- TARJETA 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="tarjeta-producto">
+
+                        <img src="https://www.bettycrocker.lat/mx/wp-content/uploads/sites/2/2020/12/BCmexico-recipe-pastel-maravilla-de-chocolate.png" alt="Pastel" class="card-img-custom">
+
+                        <div class="contenido-tarjeta">
+
+                            <div class="categoria">
+                                Variedad
+                            </div>
+
+                            <h3>Pasteles</h3>
+
+                            <p class="precio">$350</p>
+
+                            <p class="disponibilidad">
+                                Disponible
+                            </p>
+
+                            <button class="boton-vermas"
+                                onclick="abrirModal('modalPastel')">
+                                Ver más
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    <!-- FONDO OSCURO -->
+    <div id="fondoOscuro" class="fondo-oscuro"></div>
+
+    <!-- MODAL PASTEL -->
+    <div id="modalPastel" class="modal-producto">
+
+        <span class="cerrar"
+              onclick="cerrarModal('modalPastel')">
+            ✖
+        </span>
+
+        <img src="https://www.bettycrocker.lat/mx/wp-content/uploads/sites/2/2020/12/BCmexico-recipe-pastel-maravilla-de-chocolate.png" alt="Pastel" class="card-img-custom" class="img-fluid rounded mb-3">
+
+        <h2>Pastel de Chocolate</h2>
+
+        <p><strong>Precio:</strong> $350</p>
+
+        <p>
+            <strong>Ingredientes:</strong>
+            Harina, azúcar, mantequilla,
+            leche, huevo y chocolate.
+        </p>
+
+        <p>
+            <strong>Disponibilidad:</strong>
+            Disponible
+        </p>
+
+    </div>
+
+    <script>
+    function abrirModal(id){
+
+        document.getElementById(id).style.display = "block";
+
+        document.getElementById("fondoOscuro").style.display = "block";
+    }
+
+    function cerrarModal(id){
+
+        document.getElementById(id).style.display = "none";
+
+        document.getElementById("fondoOscuro").style.display = "none";
+    }
+
+    </script>
 
 </body>
 </html>
