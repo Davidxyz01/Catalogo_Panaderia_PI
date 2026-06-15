@@ -19,7 +19,7 @@ h1, h2, h3 {
 
 /* ESTILOS DEL BANNER                 */
 .banner-bg {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/carousel-1.jpg');
+    background-image: linear-gradient(rgba(254, 180, 101, 0.5), rgba(204, 119, 66, 0.607)), url('img/carousel-1.jpg');
     background-size: cover;
     background-position: center;
     min-height: 70vh;
