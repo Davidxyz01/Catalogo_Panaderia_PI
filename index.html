@@ -89,10 +89,10 @@
                         <div class="contenido-tarjeta">
 
                             <div class="categoria">
-                                Variedad
+                                Pasteles
                             </div>
 
-                            <h3>Pasteles</h3>
+                            <h3>Chocolate</h3>
 
                             <p class="precio">$350</p>
 
@@ -114,24 +114,24 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="tarjeta-producto">
 
-                        <img src="assets/pastel_cho.jpg">
+                        <img src="assets/concha.jpg">
 
                         <div class="contenido-tarjeta">
 
                             <div class="categoria">
-                                Variedad
+                                Pan dulce
                             </div>
 
-                            <h3>Pasteles</h3>
+                            <h3>Concha</h3>
 
-                            <p class="precio">$350</p>
+                            <p class="precio">$12</p>
 
                             <p class="disponibilidad">
                                 Disponible
                             </p>
 
                             <button class="boton-vermas"
-                                onclick="abrirModal('modalPastel')">
+                                onclick="abrirModal('modalConcha')">
                                 Ver más
                             </button>
 
@@ -140,28 +140,28 @@
                     </div>
                 </div>
 
-                                <!-- TARJETA 1 -->
+                                <!-- TARJETA 3 -->
                 <div class="col-lg-4 col-md-6">
                     <div class="tarjeta-producto">
 
-                        <img src="assets/pastel_cho.jpg">
+                        <img src="assets/bolillo.jpg">
 
                         <div class="contenido-tarjeta">
 
                             <div class="categoria">
-                                Variedad
+                                Pan salado
                             </div>
 
-                            <h3>Pasteles</h3>
+                            <h3>Bolillo</h3>
 
-                            <p class="precio">$350</p>
+                            <p class="precio">$5</p>
 
                             <p class="disponibilidad">
                                 Disponible
                             </p>
 
                             <button class="boton-vermas"
-                                onclick="abrirModal('modalPastel')">
+                                onclick="abrirModal('modalBolillo')">
                                 Ver más
                             </button>
 
@@ -191,6 +191,59 @@
             <strong>Ingredientes:</strong>
             Harina, azúcar, mantequilla,
             leche, huevo y chocolate.
+        </p>
+
+        <p>
+            <strong>Disponibilidad:</strong>
+            Disponible
+        </p>
+
+    </div>
+
+    <!-- MODAL Concha -->
+    <div id="modalConcha" class="modal-producto">
+
+        <span class="cerrar"
+              onclick="cerrarModal('modalConcha')">
+            ✖
+        </span>
+
+        <img src="assets/concha.jpg">
+
+        <h2>Concha</h2>
+
+        <p><strong>Precio:</strong> $12</p>
+
+        <p>
+            <strong>Ingredientes:</strong>
+            Harina, azúcar, mantequilla,
+            leche, huevo y vainilla.
+        </p>
+
+        <p>
+            <strong>Disponibilidad:</strong>
+            Disponible
+        </p>
+
+    </div>
+    <!-- MODAL Bolillo -->
+    <div id="modalBolillo" class="modal-producto">
+
+        <span class="cerrar"
+              onclick="cerrarModal('modalBolillo')">
+            ✖
+        </span>
+
+        <img src="assets/bolillo.jpg">
+
+        <h2>Bolillo</h2>
+
+        <p><strong>Precio:</strong> $5</p>
+
+        <p>
+            <strong>Ingredientes:</strong>
+            Harina, azúcar, mantequilla,
+            leche y huevo.
         </p>
 
         <p>
