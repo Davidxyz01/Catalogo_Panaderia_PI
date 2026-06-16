@@ -27,6 +27,17 @@ h1, h2, h3 {
     align-items: center;
 }
 
+.nombre_categoria{
+    display: inline-block;
+    border: 1px solid #95661f; /* El color azul 'primary' de Bootstrap */
+    border-radius: 50rem;     /* El efecto 'rounded-pill' */
+    padding-left: 1rem;       /* El equivalente a px-3 */
+    padding-right: 1rem;
+    margin-bottom: 1rem;      /* El equivalente a mb-3 */
+    color: #ab6a20;           /* Texto azul */
+    font-weight: 700;         /* Letra negrita */
+}
+
 /* BOTONES PERSONALIZADOS                     */
 .btn-primary {
     background-color: #bc815f;
