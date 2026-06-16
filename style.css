@@ -37,24 +37,6 @@ h1, h2, h3 {
     transition: all 0.3s ease;
 }
 
---HEAD
-.nombre_categoria{
-    display: inline-block;
-    border: 1px solid #95661f; /* El color azul 'primary' de Bootstrap */
-    border-radius: 50rem;     /* El efecto 'rounded-pill' */
-    padding-left: 1rem;       /* El equivalente a px-3 */
-    padding-right: 1rem;
-    margin-bottom: 1rem;      /* El equivalente a mb-3 */
-    color: #ab6a20;           /* Texto azul */
-    font-weight: 700;         /* Letra negrita */
-}
-
-/* BOTONES PERSONALIZADOS                     */
-.btn-primary {
-    background-color: #bc815f;
-    border-color: #bc815f;
-}
-
 .btn.btn-primary {
     color: #FFFFFF;
     background-color: #d4a373;
@@ -107,7 +89,7 @@ h1, h2, h3 {
     color: #1E1916 !important; /* Resalte oscuro elegante al pasar el cursor o estar activo */
 }
 
-/* --- Nuevas clases para limpiar el contacto en la navegación --- */
+/* Clases añadidas para limpiar el contacto telefónico de la barra */
 .icono-telefono {
     width: 40px; 
     height: 40px;
@@ -132,7 +114,7 @@ h1, h2, h3 {
 
 
 /* ==========================================================================
-   4. HERO BANNER
+   4. HERO BANNER (PORTADA)
    ========================================================================== */
 .banner-bg {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
@@ -149,7 +131,7 @@ h1, h2, h3 {
 /* ==========================================================================
    5. SECCIÓNES Y CATEGORÍAS
    ========================================================================== */
-/* --- Nueva clase para limpiar el límite del ancho de títulos --- */
+/* Nueva clase para controlar el centrado y ancho del título de las secciones */
 .titulo-seccion-limite {
     max-width: 500px;
 }
@@ -309,4 +291,32 @@ h1, h2, h3 {
 
 .copyright a:hover {
     color: var(--light);
+}
+
+
+/* ==========================================================================
+   9. BOTÓN FLOTANTE IR ARRIBA (SCROLL TO TOP)
+   ========================================================================== */
+.btn-ir-arriba {
+    display: none; /* Oculto inicialmente hasta que se haga scroll */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    font-size: 40px;
+    border: none;
+    outline: none;
+    background-color: var(--primary);
+    color: white;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-ir-arriba:hover {
+    background-color: #b98453;
+    transform: translateY(-3px); /* Pequeña elevación al posar el cursor */
 }

@@ -198,6 +198,14 @@
         <p><strong>Disponibilidad:</strong> Disponible</p>
     </div>
 
+
+<!-- Contenedor de BOTON DE SUBIR -->
+    <button id="btnIrArriba" class="btn-ir-arriba" onclick="subirAlInicio()">
+        <i class="bi bi-arrow-up-short"></i>
+    </button>
+
+
+
 <!-- Contenedor de copyright -->
     <div class="container-fluid copyright text-light py-4 mt-5">
         <div class="container">
@@ -214,6 +222,44 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+    function abrirModal(id){
+        document.getElementById(id).style.display = "block";
+        document.getElementById("fondoOscuro").style.display = "block";
+    }
+
+    function cerrarModal(id){
+        document.getElementById(id).style.display = "none";
+        document.getElementById("fondoOscuro").style.display = "none";
+    }
+
+    function cerrarTodosModales() {
+        const modales = document.querySelectorAll('.modal-producto');
+        modales.forEach(modal => modal.style.display = "none");
+        document.getElementById("fondoOscuro").style.display = "none";
+    }
+
+    // Mostrar el botón flotante cuando el usuario baja 300px desde el inicio
+    window.onscroll = function() {
+        const boton = document.getElementById("btnIrArriba");
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            boton.style.display = "block";
+        } else {
+            boton.style.display = "none";
+        }
+    };
+
+    // Hacer que la pantalla suba suavemente al inicio
+    function subirAlInicio() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+    </script>
+
+
 
     <script>
     function abrirModal(id){
