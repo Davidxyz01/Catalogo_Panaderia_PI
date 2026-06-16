@@ -1,32 +1,43 @@
+/********** Template CSS **********/
+:root {
+    --primary: #d4a373;    /* Tono dorado/pan artesanal principal */
+    --secondary: #545454;
+    --light: #FDF5EB;
+    --dark: #1E1916;
+}
 
-/* ESTILOS GENERALES                          */
+/* ==========================================================================
+   1. CONFIGURACIÓN GENERAL Y TIPOGRAFÍA
+   ========================================================================== */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f8f9fa;
+    background-color: #fcf9f5; 
+    color: #4a3f35; 
 }
 
 h1, h2, h3 {
     font-family: 'Playfair Display', serif;
+    font-weight: 700;
 }
 
 .text-primary {
-    color: #bc815f !important; /* Tono café artesanal para panadería */
+    color: #d4a373 !important; 
 }
 
 .border-primary {
-    border-color: #bc815f !important;
+    border-color: #d4a373 !important;
 }
 
-/* ESTILOS DEL BANNER                 */
-.banner-bg {
-    background-image: linear-gradient(rgba(52, 47, 41, 0.5), rgba(16, 9, 5, 0.607)), url('assets/carrusel1.jpeg');
-    background-size: cover;
-    background-position: center;
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
+
+/* ==========================================================================
+   2. BOTONES GENERALES Y PERSONALIZADOS
+   ========================================================================== */
+.btn {
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
+<<<<<<< HEAD
 .nombre_categoria{
     display: inline-block;
     border: 1px solid #95661f; /* El color azul 'primary' de Bootstrap */
@@ -42,185 +53,244 @@ h1, h2, h3 {
 .btn-primary {
     background-color: #bc815f;
     border-color: #bc815f;
+=======
+.btn.btn-primary {
+    color: #FFFFFF;
+    background-color: #d4a373;
+    border-color: #d4a373;
+>>>>>>> dbe0b0c1fbb5def3fd21730129c9ce28a9377a55
 }
 
 .btn-primary:hover {
-    background-color: #9e6749;
-    border-color: #9e6749;
+    background-color: #b98453;
+    border-color: #b98453;
+    transform: translateY(-2px);
 }
 
-/* CONFIGURACIÓN DE LAS IMÁGENES DEL CATÁLOGO */
-/* =========================
-   TARJETAS PEQUEÑAS
-========================= */
+.btn-outline-primary {
+    color: #d4a373;
+    border-color: #d4a373;
+}
 
-.tarjeta-producto{
+.btn-outline-primary:hover {
+    background-color: #d4a373;
+    border-color: #d4a373;
+    color: #fff;
+}
 
-    background:white;
 
-    border-radius:10px;
+/* ==========================================================================
+   3. NAVBAR FIJO Y COMPLETAMENTE CAFÉ
+   ========================================================================== */
+.navbar-custom {
+    background-color: #211C1A !important; /* Mismo color café rústico fijo COLOR BANNER */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); /* Sombra sutil para separar del fondo */
+    z-index: 1030;
+}
 
-    overflow:hidden;
+.navbar-custom .logo-text {
+    color: #ffffff !important; /* Nombre de la marca en blanco */
+    font-size: 1.8rem;
+}
 
-    border:1px solid #dee2e6;
+.navbar-custom .navbar-nav .nav-link {
+    padding: 20px 15px;
+    color: #ffffff !important; /* Enlaces en blanco */
+    opacity: 0.85;
+    transition: .3s;
+}
 
-    box-shadow:
-    0 .125rem .25rem
-    rgba(0,0,0,.075);
+.navbar-custom .navbar-nav .nav-link:hover,
+.navbar-custom .navbar-nav .nav-link.active {
+    opacity: 1;
+    font-weight: bold;
+    color: #1E1916 !important; /* Resalte oscuro elegante al pasar el cursor o estar activo */
+}
 
-    height:600px;
+/* Ajuste móvil */
+@media (max-width: 991.98px) {
+    .navbar-custom .navbar-collapse {
+        background-color: #d4a373;
+        padding: 10px;
+        border-radius: 0 0 10px 10px;
+    }
+    .navbar-custom .navbar-nav .nav-link {
+        padding: 10px 0;
+    }
+}
 
-    display:flex;
 
-    flex-direction:column;
+/* ==========================================================================
+   4. HERO BANNER
+   ========================================================================== */
+.banner-bg {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('assets/carrusel1.jpeg') no-repeat center center;
+    background-size: cover;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    border-bottom: 5px solid #b98453;
+    padding-top: 80px; /* Margen superior para evitar que el menú tape el contenido */
+}
+
+
+/* ==========================================================================
+   5. SECCIÓN CATEGORÍAS
+   ========================================================================== */
+.placeholder-image-box {
+    height: 180px;
+    background-color: #e9ecef;
+    background-image: repeating-linear-gradient(45deg, #f1f3f5, #f1f3f5 10px, #e9ecef 10px, #e9ecef 20px);
+}
+
+.categoria {
+    display: inline-block;
+    border: 1px solid #d4a373;
+    color: #d4a373;
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+
+/* ==========================================================================
+   6. TARJETAS DE PRODUCTOS
+   ========================================================================== */
+.tarjeta-producto {
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    height: 520px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
 }
 
 .tarjeta-producto img {
     width: 100%;
-    height: 300px;
+    height: 240px;
     object-fit: cover;
 }
-.contenido-tarjeta{
 
-    padding:20px;
-
-    text-align:center;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:space-between;
-
-    flex-grow:1;
+.contenido-tarjeta {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
 }
 
-.categoria{
-
-    display:inline-block;
-
-    border:1px solid #bc815f;
-
-    color:#bc815f;
-
-    padding:6px 15px;
-
-    border-radius:50px;
-
-    font-weight:bold;
-
-    margin-bottom:15px;
+.contenido-tarjeta h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    color: #5c4d3c;
 }
 
-.precio{
-
-    color:green;
-
-    font-weight:bold;
-
-    font-size:20px;
+.precio {
+    color: #d4a373;
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 5px;
 }
 
-.disponibilidad{
-    color:#6c757d;
+.disponibilidad {
+    color: #28a745;
 }
 
-.boton-vermas{
 
-    background:#bc815f;
-
-    color:white;
-
-    border:none;
-
-    padding:10px;
-
-    border-radius:5px;
-
-    cursor:pointer;
+/* ==========================================================================
+   7. MODALES INTERACTIVOS Y FONDO OSCURO
+   ========================================================================== */
+.fondo-oscuro {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px); 
+    z-index: 1040;
 }
 
-.boton-vermas:hover{
-    background:#9e6749;
+.modal-producto {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    z-index: 1050;
+    text-align: center;
+    animation: entradaModal 0.3s ease-out;
 }
 
-/* =========================
-   FONDO OSCURO
-
-   Hace que lo de atrás
-   se vea opaco.
-========================= */
-
-.fondo-oscuro{
-
-    display:none;
-
-    position:fixed;
-
-    top:0;
-    left:0;
-
-    width:100%;
-    height:100%;
-
-    background:
-    rgba(0,0,0,.6);
-
-    z-index:998;
+.modal-producto img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
-/* =========================
-   MODAL GRANDE
-========================= */
-
-.modal-producto{
-
-    display:none;
-
-    position:fixed;
-
-    top:50%;
-    left:50%;
-
-    transform:
-    translate(-50%,-50%);
-
-    width:650px;
-
-    max-width:90%;
-
-    background:#f1e5db;
-    padding:25px;
-    border-radius:15px;
-    text-align:center;
-    box-shadow:0 0 25px rgba(0,0,0,.3);
-    z-index:999;
-}
-
-.modal-producto img{
-    width:100%;
-    max-height:300px;
-    object-fit:cover;
-    border-radius:10px;
-}
-
-.cerrar{
-
-    float:right;
-
-    font-size:30px;
-
-    color:#da1414;
-
-    cursor:pointer;
-}
-
-.modal-producto h2{
-    color: #5A3E2D;
+.modal-producto h2 {
+    color: #5c4d3c;
     margin-top: 10px;
     font-weight: bold;
+    margin-bottom: 15px;
 }
 
-.modal-producto p{
-    color: #362114;
+.modal-producto p {
+    color: #4a3f35;
+}
+
+.modal-producto .cerrar {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: #da1414;
+    cursor: pointer;
+}
+
+@keyframes entradaModal {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+/* ==========================================================================
+   8. FOOTER Y COPYRIGHT
+   ========================================================================== */
+.copyright {
+    background: #111111;
+}
+
+.copyright a {
+    color: var(--primary);
+}
+
+.copyright a:hover {
+    color: var(--light);
 }

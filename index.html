@@ -9,21 +9,53 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet"> 
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom py-2 px-lg-5">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand me-4">
+                <h1 class="logo-text m-0">Baker</h1>
+            </a>
+            
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav mx-auto p-4 p-lg-0">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="#catalogo" class="nav-item nav-link">Categorías</a>
+                    <a href="#productos" class="nav-item nav-link">Productos</a>
+                </div>
+                
+                <div class="d-none d-lg-flex align-items-center">
+                    <div class="flex-shrink-0 btn-lg-square border border-light rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                        <i class="fa fa-phone text-light"></i>
+                    </div>
+                    <div class="ps-3">
+                        <small class="text-light-50 mb-0 d-block" style="font-size: 0.8rem; opacity: 0.8;">Llámanos</small>
+                        <p class="text-light fs-6 mb-0 fw-bold">+012 345 6789</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <div class="container-fluid p-0 mb-5">
         <div class="banner-bg text-light">
             <div class="container">
                 <div class="row justify-content-start">
                     <div class="col-lg-8 p-4">
-                        <br>
                         <h1 class="display-1 text-light mb-4">Horneamos Con Pasión</h1>
                         <p class="fs-5 mb-4 pb-3">Descubre la variedad de texturas y sabores que preparamos con dedicación todos los días directamente para ti.</p>
-                        <a href="#catalogo" class="btn btn-primary rounded-pill py-3 px-5">Ver Catálogo</a>
+                        <a href="#productos" class="btn btn-primary rounded-pill py-3 px-5">Ver Catálogo</a>
                     </div>
                 </div>
             </div>
@@ -37,7 +69,6 @@
             </div>
             
             <div class="row g-4">
-                
                 <div class="col-lg-4 col-md-6">
                     <div class="bg-white rounded overflow-hidden h-100 shadow-sm border d-flex flex-column justify-content-between">
                         <div class="text-center p-4">
@@ -67,204 +98,132 @@
                         <div class="placeholder-image-box"></div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="productos" class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+                <h2 class="display-6 mb-4">Nuestros Productos</h2>
+            </div>
+            <div class="row g-4">
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="tarjeta-producto border rounded p-3 bg-white shadow-sm">
+                        <img src="assets/pastel_cho.jpg" class="img-fluid rounded mb-3" alt="Pastel de Chocolate">
+                        <div class="contenido-tarjeta">
+                            <div>
+                                <div class="categoria text-muted small mb-1">Pasteles</div>
+                                <h3>Chocolate</h3>
+                            </div>
+                            <div>
+                                <p class="precio fw-bold text-primary">$350</p>
+                                <p class="disponibilidad text-success small">Disponible</p>
+                                <button class="btn btn-outline-primary w-100" onclick="abrirModal('modalPastel')">Ver más</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="tarjeta-producto border rounded p-3 bg-white shadow-sm">
+                        <img src="assets/concha.jpg" class="img-fluid rounded mb-3" alt="Concha">
+                        <div class="contenido-tarjeta">
+                            <div>
+                                <div class="categoria text-muted small mb-1">Pan dulce</div>
+                                <h3>Concha</h3>
+                            </div>
+                            <div>
+                                <p class="precio fw-bold text-primary">$12</p>
+                                <p class="disponibilidad text-success small">Disponible</p>
+                                <button class="btn btn-outline-primary w-100" onclick="abrirModal('modalConcha')">Ver más</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="tarjeta-producto border rounded p-3 bg-white shadow-sm">
+                        <img src="assets/bolillo.jpg" class="img-fluid rounded mb-3" alt="Bolillo">
+                        <div class="contenido-tarjeta">
+                            <div>
+                                <div class="categoria text-muted small mb-1">Pan salado</div>
+                                <h3>Bolillo</h3>
+                            </div>
+                            <div>
+                                <p class="precio fw-bold text-primary">$5</p>
+                                <p class="disponibilidad text-success small">Disponible</p>
+                                <button class="btn btn-outline-primary w-100" onclick="abrirModal('modalBolillo')">Ver más</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
     </div>
 
-<div id="catalogo" class="container-xxl py-5">
+    <div id="fondoOscuro" class="fondo-oscuro" onclick="cerrarTodosModales()"></div>
+
+    <div id="modalPastel" class="modal-producto">
+        <span class="cerrar" onclick="cerrarModal('modalPastel')">✖</span>
+        <img src="assets/pastel_cho.jpg" alt="Pastel de Chocolate">
+        <h2>Pastel de Chocolate</h2>
+        <p><strong>Precio:</strong> $350</p>
+        <p><strong>Ingredientes:</strong> Harina, azúcar, mantequilla, leche, huevo y chocolate.</p>
+        <p><strong>Disponibilidad:</strong> Disponible</p>
+    </div>
+
+    <div id="modalConcha" class="modal-producto">
+        <span class="cerrar" onclick="cerrarModal('modalConcha')">✖</span>
+        <img src="assets/concha.jpg" alt="Concha">
+        <h2>Concha</h2>
+        <p><strong>Precio:</strong> $12</p>
+        <p><strong>Ingredientes:</strong> Harina, azúcar, mantequilla, leche, huevo y vainilla.</p>
+        <p><strong>Disponibilidad:</strong> Disponible</p>
+    </div>
+
+    <div id="modalBolillo" class="modal-producto">
+        <span class="cerrar" onclick="cerrarModal('modalBolillo')">✖</span>
+        <img src="assets/bolillo.jpg" alt="Bolillo">
+        <h2>Bolillo</h2>
+        <p><strong>Precio:</strong> $5</p>
+        <p><strong>Ingredientes:</strong> Harina, azúcar, mantequilla, leche y huevo.</p>
+        <p><strong>Disponibilidad:</strong> Disponible</p>
+    </div>
+
+    <div class="container-fluid copyright text-light py-4 mt-5">
         <div class="container">
-
-            <div class="row g-4">
-
-                <!-- TARJETA 1 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="tarjeta-producto">
-
-                        <img src="assets/pastel_cho.jpg">
-
-                        <div class="contenido-tarjeta">
-
-                            <div class="categoria">
-                                Pasteles
-                            </div>
-
-                            <h3>Chocolate</h3>
-
-                            <p class="precio">$350</p>
-
-                            <p class="disponibilidad">
-                                Disponible
-                            </p>
-
-                            <button class="boton-vermas"
-                                onclick="abrirModal('modalPastel')">
-                                Ver más
-                            </button>
-
-                        </div>
-
-                    </div>
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a href="#">Baker Catálogo</a>, Todos los derechos reservados.
                 </div>
-
-                <!-- TARJETA 2 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="tarjeta-producto">
-
-                        <img src="assets/concha.jpg">
-
-                        <div class="contenido-tarjeta">
-
-                            <div class="categoria">
-                                Pan dulce
-                            </div>
-
-                            <h3>Concha</h3>
-
-                            <p class="precio">$12</p>
-
-                            <p class="disponibilidad">
-                                Disponible
-                            </p>
-
-                            <button class="boton-vermas"
-                                onclick="abrirModal('modalConcha')">
-                                Ver más
-                            </button>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                                <!-- TARJETA 3 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="tarjeta-producto">
-
-                        <img src="assets/bolillo.jpg">
-
-                        <div class="contenido-tarjeta">
-
-                            <div class="categoria">
-                                Pan salado
-                            </div>
-
-                            <h3>Bolillo</h3>
-
-                            <p class="precio">$5</p>
-
-                            <p class="disponibilidad">
-                                Disponible
-                            </p>
-
-                            <button class="boton-vermas"
-                                onclick="abrirModal('modalBolillo')">
-                                Ver más
-                            </button>
-
-                        </div>
-
-                    </div>
+                <div class="col-md-6 text-center text-md-end">
+                    Diseñado para Exhibición Virtual
                 </div>
             </div>
-    <!-- FONDO OSCURO -->
-    <div id="fondoOscuro" class="fondo-oscuro"></div>
-
-    <!-- MODAL PASTEL -->
-    <div id="modalPastel" class="modal-producto">
-
-        <span class="cerrar"
-              onclick="cerrarModal('modalPastel')">
-            ✖
-        </span>
-
-        <img src="assets/pastel_cho.jpg">
-
-        <h2>Pastel de Chocolate</h2>
-
-        <p><strong>Precio:</strong> $350</p>
-
-        <p>
-            <strong>Ingredientes:</strong>
-            Harina, azúcar, mantequilla,
-            leche, huevo y chocolate.
-        </p>
-
-        <p>
-            <strong>Disponibilidad:</strong>
-            Disponible
-        </p>
-
+        </div>
     </div>
 
-    <!-- MODAL Concha -->
-    <div id="modalConcha" class="modal-producto">
-
-        <span class="cerrar"
-              onclick="cerrarModal('modalConcha')">
-            ✖
-        </span>
-
-        <img src="assets/concha.jpg">
-
-        <h2>Concha</h2>
-
-        <p><strong>Precio:</strong> $12</p>
-
-        <p>
-            <strong>Ingredientes:</strong>
-            Harina, azúcar, mantequilla,
-            leche, huevo y vainilla.
-        </p>
-
-        <p>
-            <strong>Disponibilidad:</strong>
-            Disponible
-        </p>
-
-    </div>
-    <!-- MODAL Bolillo -->
-    <div id="modalBolillo" class="modal-producto">
-
-        <span class="cerrar"
-              onclick="cerrarModal('modalBolillo')">
-            ✖
-        </span>
-
-        <img src="assets/bolillo.jpg">
-
-        <h2>Bolillo</h2>
-
-        <p><strong>Precio:</strong> $5</p>
-
-        <p>
-            <strong>Ingredientes:</strong>
-            Harina, azúcar, mantequilla,
-            leche y huevo.
-        </p>
-
-        <p>
-            <strong>Disponibilidad:</strong>
-            Disponible
-        </p>
-
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
     function abrirModal(id){
-
         document.getElementById(id).style.display = "block";
-
         document.getElementById("fondoOscuro").style.display = "block";
     }
 
     function cerrarModal(id){
-
         document.getElementById(id).style.display = "none";
-
         document.getElementById("fondoOscuro").style.display = "none";
     }
 
+    function cerrarTodosModales() {
+        const modales = document.querySelectorAll('.modal-producto');
+        modales.forEach(modal => modal.style.display = "none");
+        document.getElementById("fondoOscuro").style.display = "none";
+    }
     </script>
 
 </body>
