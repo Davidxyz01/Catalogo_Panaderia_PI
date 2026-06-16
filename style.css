@@ -62,7 +62,7 @@ h1, h2, h3 {
 
 
 /* ==========================================================================
-   3. NAVBAR FIJO Y COMPLETAMENTE CAFÉ
+   3. NAVBAR FIJO Y ELEMENTOS DE CONTACTO (TELÉFONO)
    ========================================================================== */
 .navbar-custom {
     background-color: #211C1A !important; /* Mismo color café rústico fijo COLOR BANNER */
@@ -89,7 +89,18 @@ h1, h2, h3 {
     color: #1E1916 !important; /* Resalte oscuro elegante al pasar el cursor o estar activo */
 }
 
-/* Ajuste móvil */
+/* --- Nuevas clases para limpiar el contacto en la navegación --- */
+.icono-telefono {
+    width: 40px; 
+    height: 40px;
+}
+
+.texto-llamada {
+    font-size: 0.8rem; 
+    opacity: 0.8;
+}
+
+/* Ajuste móvil de la navegación */
 @media (max-width: 991.98px) {
     .navbar-custom .navbar-collapse {
         background-color: #d4a373;
@@ -118,8 +129,13 @@ h1, h2, h3 {
 
 
 /* ==========================================================================
-   5. SECCIÓN CATEGORÍAS
+   5. SECCIÓNES Y CATEGORÍAS
    ========================================================================== */
+/* --- Nueva clase para limpiar el límite del ancho de títulos --- */
+.titulo-seccion-limite {
+    max-width: 500px;
+}
+
 .placeholder-image-box {
     height: 180px;
     background-color: #e9ecef;
