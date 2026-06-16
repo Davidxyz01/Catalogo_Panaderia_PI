@@ -37,7 +37,7 @@ h1, h2, h3 {
     transition: all 0.3s ease;
 }
 
-<<<<<<< HEAD
+--HEAD
 .nombre_categoria{
     display: inline-block;
     border: 1px solid #95661f; /* El color azul 'primary' de Bootstrap */
@@ -53,12 +53,12 @@ h1, h2, h3 {
 .btn-primary {
     background-color: #bc815f;
     border-color: #bc815f;
-=======
+}
+
 .btn.btn-primary {
     color: #FFFFFF;
     background-color: #d4a373;
     border-color: #d4a373;
->>>>>>> dbe0b0c1fbb5def3fd21730129c9ce28a9377a55
 }
 
 .btn-primary:hover {
