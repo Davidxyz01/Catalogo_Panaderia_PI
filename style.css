@@ -103,7 +103,7 @@ h1, h2, h3 {
 /* Ajuste móvil de la navegación */
 @media (max-width: 991.98px) {
     .navbar-custom .navbar-collapse {
-        background-color: #d4a373;
+        background-color: #211C1A; /* <--- CAFÉ FUERTE DEL*/
         padding: 10px;
         border-radius: 0 0 10px 10px;
     }
