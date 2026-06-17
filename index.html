@@ -18,7 +18,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom py-2 px-lg-5">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom py-2 px-lg-5 contenedor-menu-navegacion">
         <div class="container-fluid">
             <a href="index.html" class="navbar-brand me-4">
                 <h1 class="logo-text m-0">Baker</h1>
@@ -29,13 +29,13 @@
             </button>
             
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav mx-auto p-4 p-lg-0">
+                <div class="navbar-nav mx-auto p-4 p-lg-0 enlaces-navegacion">
                     <a href="index.html" class="nav-item nav-link active">Home</a>
                     <a href="#catalogo" class="nav-item nav-link">Categorías</a>
                     <a href="#productos" class="nav-item nav-link">Productos</a>
                 </div>
                 
-                <div class="d-none d-lg-flex align-items-center">
+                <div class="d-none d-lg-flex align-items-center bloque-contacto-telefono">
                     <div class="icono-telefono flex-shrink-0 btn-lg-square border border-light rounded-circle d-flex align-items-center justify-content-center">
                         <i class="fa fa-phone text-light"></i>
                     </div>
@@ -47,12 +47,11 @@
             </div>
         </div>
     </nav>
-
-    <div class="container-fluid p-0 mb-5">
+    <div class="container-fluid p-0 mb-5 bloque-banner-hero">
         <div class="banner-bg text-light">
             <div class="container">
                 <div class="row justify-content-start">
-                    <div class="col-lg-8 p-4">
+                    <div class="col-lg-8 p-4 columna-texto-banner">
                         <h1 class="display-1 text-light mb-4">Horneamos Con Pasión</h1>
                         <p class="fs-5 mb-4 pb-3">Descubre la variedad de texturas y sabores que preparamos con dedicación todos los días directamente para ti.</p>
                         <a href="#productos" class="btn btn-primary rounded-pill py-3 px-5">Ver Catálogo</a>
@@ -61,68 +60,64 @@
             </div>
         </div>
     </div>
-
-
-<div id="catalogo" class="container-xxl py-5">
+    <div id="catalogo" class="container-xxl py-5 seccion-bloque-categorias">
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
                 <h2 class="display-6 mb-4">Explora las Categorías</h2>
             </div>
             
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="bg-white rounded overflow-hidden h-100 shadow-sm border d-flex flex-column justify-content-between p-4">
+            <div class="row g-4 contenedor-tarjetas-categorias">
+                <div class="col-lg-4 col-md-6 columna-tarjeta-categoria">
+                    <div class="bg-white rounded overflow-hidden h-100 shadow-sm border d-flex flex-column justify-content-between p-4 caja-contenido-categoria">
                         <div class="text-center">
-                            <div class="d-inline-block border border-primary rounded-pill px-3 mb-3 text-primary fw-bold">
+                            <div class="d-inline-block border border-primary rounded-pill px-3 mb-3 text-primary fw-bold categoria">
                                 <h3>Pan dulce</h3>
                             </div>
                             <p class="text-muted">Esponjoso, tierno y con el toque justo de dulzura; el compañero ideal para consentirse con un café o chocolate caliente.</p>
                         </div>
-                        </div>
+                    </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
-                    <div class="bg-white rounded overflow-hidden h-100 shadow-sm border d-flex flex-column justify-content-between p-4">
+                <div class="col-lg-4 col-md-6 columna-tarjeta-categoria">
+                    <div class="bg-white rounded overflow-hidden h-100 shadow-sm border d-flex flex-column justify-content-between p-4 caja-contenido-categoria">
                         <div class="text-center">
-                            <div class="d-inline-block border border-primary rounded-pill px-3 mb-3 text-primary fw-bold">
+                            <div class="d-inline-block border border-primary rounded-pill px-3 mb-3 text-primary fw-bold categoria">
                                 <h3>Pan salado</h3>
                             </div>
                             <p class="text-muted">Crujiente por fuera, suave por dentro y con el punto justo de sal; la base perfecta para tus comidas y sándwiches.</p>
                         </div>
-                        </div>
+                    </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
-                    <div class="bg-white rounded overflow-hidden h-100 shadow-sm border d-flex flex-column justify-content-between p-4">
+                <div class="col-lg-4 col-md-6 columna-tarjeta-categoria">
+                    <div class="bg-white rounded overflow-hidden h-100 shadow-sm border d-flex flex-column justify-content-between p-4 caja-contenido-categoria">
                         <div class="text-center">
-                            <div class="d-inline-block border border-primary rounded-pill px-3 mb-3 text-primary fw-bold">
+                            <div class="d-inline-block border border-primary rounded-pill px-3 mb-3 text-primary fw-bold categoria">
                                 <h3>Pan sin gluten</h3>
                             </div>
                             <p class="text-muted">Elaborado con harinas alternativas para cuidar tu salud, ofreciendo una textura suave y todo el sabor del pan tradicional.</p>
                         </div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-    <div id="productos" class="container-xxl py-5">
+    <div id="productos" class="container-xxl py-5 seccion-bloque-productos">
         <div class="container">
             <div class="titulo-seccion-limite text-center mx-auto mb-5">
                 <h2 class="display-6 mb-4">Nuestros Productos</h2>
             </div>
             
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
+            <div class="row g-4 contenedor-tarjetas-productos">
+                <div class="col-lg-4 col-md-6 columna-tarjeta-producto">
                     <div class="tarjeta-producto border rounded p-3 bg-white shadow-sm">
                         <img src="assets/pastel_cho.jpg" class="img-fluid rounded mb-3" alt="Pastel de Chocolate">
                         <div class="contenido-tarjeta">
-                            <div>
-                                <div class="d-inline-block border border-primary rounded-pill px-3 mb-3 text-primary fw-bold">Pasteles</div>
+                            <div class="bloque-superior-info">
+                                <div class="d-inline-block border border-primary rounded-pill px-3 mb-3 text-primary fw-bold categoria">Pasteles</div>
                                 <h3>Chocolate</h3>
                             </div>
-                            <div>
+                            <div class="bloque-inferior-precio-boton">
                                 <p class="precio fw-bold text-primary">$350</p>
                                 <p class="disponibilidad text-success small">Disponible</p>
                                 <button class="btn btn-outline-primary w-100" onclick="abrirModal('modalPastel')">Ver más</button>
@@ -131,15 +126,15 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 columna-tarjeta-producto">
                     <div class="tarjeta-producto border rounded p-3 bg-white shadow-sm">
                         <img src="assets/concha.jpg" class="img-fluid rounded mb-3" alt="Concha">
                         <div class="contenido-tarjeta">
-                            <div>
-                                <div class="d-inline-block border border-primary rounded-pill px-3 mb-3 text-primary fw-bold">Pan dulce</div>
+                            <div class="bloque-superior-info">
+                                <div class="d-inline-block border border-primary rounded-pill px-3 mb-3 text-primary fw-bold categoria">Pan dulce</div>
                                 <h3>Concha</h3>
                             </div>
-                            <div>
+                            <div class="bloque-inferior-precio-boton">
                                 <p class="precio fw-bold text-primary">$12</p>
                                 <p class="disponibilidad text-success small">Disponible</p>
                                 <button class="btn btn-outline-primary w-100" onclick="abrirModal('modalConcha')">Ver más</button>
@@ -148,15 +143,15 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 columna-tarjeta-producto">
                     <div class="tarjeta-producto border rounded p-3 bg-white shadow-sm">
                         <img src="assets/bolillo.jpg" class="img-fluid rounded mb-3" alt="Bolillo">
                         <div class="contenido-tarjeta">
-                            <div>
-                                <div class="d-inline-block border border-primary rounded-pill px-3 mb-3 text-primary fw-bold">Pan salado</div>
+                            <div class="bloque-superior-info">
+                                <div class="d-inline-block border border-primary rounded-pill px-3 mb-3 text-primary fw-bold categoria">Pan salado</div>
                                 <h3>Bolillo</h3>
                             </div>
-                            <div>
+                            <div class="bloque-inferior-precio-boton">
                                 <p class="precio fw-bold text-primary">$5</p>
                                 <p class="disponibilidad text-success small">Disponible</p>
                                 <button class="btn btn-outline-primary w-100" onclick="abrirModal('modalBolillo')">Ver más</button>
@@ -167,8 +162,6 @@
             </div>
         </div>
     </div>
-
-
     <div id="fondoOscuro" class="fondo-oscuro" onclick="cerrarTodosModales()"></div>
 
     <div id="modalPastel" class="modal-producto">
@@ -197,17 +190,10 @@
         <p><strong>Ingredientes:</strong> Harina, azúcar, mantequilla, leche y huevo.</p>
         <p><strong>Disponibilidad:</strong> Disponible</p>
     </div>
-
-
-<!-- Contenedor de BOTON DE SUBIR -->
     <button id="btnIrArriba" class="btn-ir-arriba" onclick="subirAlInicio()">
         <i class="bi bi-arrow-up-short"></i>
     </button>
-
-
-
-<!-- Contenedor de copyright -->
-    <div class="container-fluid copyright text-light py-4 mt-5">
+    <div class="container-fluid copyright text-light py-4 mt-5 bloque-pie-pagina">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
@@ -219,8 +205,6 @@
             </div>
         </div>
     </div>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
@@ -229,6 +213,7 @@
         document.getElementById("fondoOscuro").style.display = "block";
     }
 
+    /* Modificado para limpiar la manipulación directa si cierras individual o masivo */
     function cerrarModal(id){
         document.getElementById(id).style.display = "none";
         document.getElementById("fondoOscuro").style.display = "none";
@@ -240,7 +225,6 @@
         document.getElementById("fondoOscuro").style.display = "none";
     }
 
-    // Mostrar el botón flotante cuando el usuario baja 300px desde el inicio
     window.onscroll = function() {
         const boton = document.getElementById("btnIrArriba");
         if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
@@ -250,7 +234,6 @@
         }
     };
 
-    // Hacer que la pantalla suba suavemente al inicio
     function subirAlInicio() {
         window.scrollTo({
             top: 0,
@@ -258,26 +241,5 @@
         });
     }
     </script>
-
-
-
-    <script>
-    function abrirModal(id){
-        document.getElementById(id).style.display = "block";
-        document.getElementById("fondoOscuro").style.display = "block";
-    }
-
-    function cerrarModal(id){
-        document.getElementById(id).style.display = "none";
-        document.getElementById("fondoOscuro").style.display = "none";
-    }
-
-    function cerrarTodosModales() {
-        const modales = document.querySelectorAll('.modal-producto');
-        modales.forEach(modal => modal.style.display = "none");
-        document.getElementById("fondoOscuro").style.display = "none";
-    }
-    </script>
-
 </body>
 </html>
