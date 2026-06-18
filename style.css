@@ -9,7 +9,7 @@
 /* ==========================================================================
    1. CONFIGURACIÓN GENERAL Y TIPOGRAFÍA
    ========================================================================== */
-body {
+.pagina-principal {
     font-family: 'Roboto', sans-serif;
     background-color: #fcf9f5; 
     color: #4a3f35; 
@@ -367,4 +367,68 @@ footer {
     display: flex;
     justify-content: center;
     color:#beb2b2
+}
+
+/* ==========================================================================
+   9. Parte dell login
+   ========================================================================== */
+.login-html{
+    background-image: linear-gradient(rgba(52, 47, 41, 0.5), rgba(16, 9, 5, 0.607)),url(assets/loginimg.jpg);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-size:cover;
+    background-position: center;
+    height: auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container{
+    background-color: #fdfdfd;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgb(1, 1, 1, 2);
+    max-width: 250px;
+
+}
+.login-title{
+    text-align: center;
+    margin-bottom: 24px;
+    color: #593216;
+}
+.form-login{
+    margin-bottom: 15px;
+}
+.form-login label{
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #6f4528;
+}
+.form-login input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #1d1428;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.btn-login{
+    width: 100%;
+    padding: 10px;
+    background-color: #6b3a0b;
+    color: #cccccc;
+    border:none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-login:hover{
+    background-color: #3a1e0e;
 }
