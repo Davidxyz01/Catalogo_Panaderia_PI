@@ -499,7 +499,7 @@ footer {
 
 
 /* Contenedor principal de las tarjetas */
-.cards-container {
+.datos-container {
   display: flex;           
   flex-wrap: wrap;          
   justify-content: center;  
@@ -510,7 +510,7 @@ footer {
 }
 
 /* Estilo individual para cada tarjetita de dato curioso */
-.fact-card {
+.dat-card {
   background-color: #ffeee0; 
   border-radius: 12px;       
   padding: 24px;
@@ -526,26 +526,26 @@ footer {
 }
 
 /* Efecto visual cuando el usuario pasa el cursor sobre la tarjeta */
-.fact-card:hover {
+.dat-card:hover {
   transform: translateY(-5px); /* Eleva la tarjeta un poco */
   box-shadow: 1 20px 30px rgba(117, 65, 29, 0.15); /* Aumenta la sombra (con un sutil tono marrón/cálido) */
 }
 
 /* Estilos para el emoji/icono dentro de la tarjeta */
-.fact-icon {
+.dat-icon {
   font-size: 2.5rem;         /* Hace el emoji más grande y vistoso */
   margin-bottom: 12px;       /* Separa el icono del título */
 }
 
 /* Estilos para el título de la tarjeta */
-.fact-card h3 {
+.dat-card h3 {
   color: #5c3a21;
   margin-bottom: 10px;
   font-size: 30px;
 }
 
 /* Estilos para el texto descriptivo */
-.fact-card p {
+.dat-card p {
   color: #6e6e6e;
   font-size: 0.95rem;
   line-height: 1.5;
