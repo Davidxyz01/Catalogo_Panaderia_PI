@@ -432,3 +432,121 @@ footer {
 .btn-login:hover{
     background-color: #3a1e0e;
 }
+
+/* ==========================================================================
+   9. CSS DE SOBRE NOSOTROS / HISTORIA
+   ========================================================================== */
+
+.historia_html {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fcf9f5; 
+    color: #4a3f35; 
+    padding-top: 120px;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    margin: 0;
+}
+
+/* Carrusel */
+.contenedor-carrusel {
+    max-width: 650px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    flex: 1;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+}
+
+/* De base, todas las fotos están ocultas */
+.foto_carru {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: none; 
+}
+
+/* La foto que tenga esta clase SÍ se va a mostrar */
+.foto_carru.activa {
+    display: block;
+}
+
+.info_inicial {
+    display: flex;        
+    align-items: center;   
+    justify-content: space-between; 
+    gap: 30px; 
+    width: 92%;            
+    max-width: 1400px;     
+    margin: 0 auto;        
+    padding: 20px;
+    flex-wrap: wrap;
+}
+.texto_inicial{
+    flex: 1;              
+    text-align: right;     
+}
+.texto_inicial p{
+    text-align: center; 
+}
+.texto_inicial h1{
+    text-align: center; 
+    padding-bottom: 10px;
+}
+
+
+/* Contenedor principal de las tarjetas */
+.cards-container {
+  display: flex;           
+  flex-wrap: wrap;          
+  justify-content: center;  
+  gap: 24px;                
+  padding: 20px;            
+  max-width: 1200px;        
+  margin: 0 auto;          
+}
+
+/* Estilo individual para cada tarjetita de dato curioso */
+.fact-card {
+  background-color: #ffeee0; 
+  border-radius: 12px;       
+  padding: 24px;
+  flex: 1 1 250px;
+  max-width: 320px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  border: 1px solid #f0e6df;
+  width: 100%;
+  /* Efecto de transición suave para el Hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  align-items: center;
+}
+
+/* Efecto visual cuando el usuario pasa el cursor sobre la tarjeta */
+.fact-card:hover {
+  transform: translateY(-5px); /* Eleva la tarjeta un poco */
+  box-shadow: 1 20px 30px rgba(117, 65, 29, 0.15); /* Aumenta la sombra (con un sutil tono marrón/cálido) */
+}
+
+/* Estilos para el emoji/icono dentro de la tarjeta */
+.fact-icon {
+  font-size: 2.5rem;         /* Hace el emoji más grande y vistoso */
+  margin-bottom: 12px;       /* Separa el icono del título */
+}
+
+/* Estilos para el título de la tarjeta */
+.fact-card h3 {
+  color: #5c3a21;
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+
+/* Estilos para el texto descriptivo */
+.fact-card p {
+  color: #6e6e6e;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
