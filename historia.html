@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panadería ejemplo</title>
+    <title>Panadería - Sobre Nosotros</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,32 +18,31 @@
 </head>
 <body class="historia_html">
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom py-2 px-lg-5 contenedor-menu-navegacion">
-        <div class="container-fluid">
-            <a href="index.html" class="navbar-brand me-4">
-                <h1 class="logo-text m-0">Baker</h1>
+    <!-- MENÚ DE NAVEGACIÓN UNIFICADO Y CORREGIDO -->
+    <nav class="contenedor-1-inicio">
+        <div class="menu-interno">
+            <a href="index.html" class="menu-marca">
+                <h1 class="logo-texto">Baker</h1>
             </a>
             
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <img src="assets/menupan.svg" alt="Menú" class="nav">
+            <button type="button" class="menu-boton-movil" onclick="controlarMenu()">
+                <img src="assets/menupan.svg" alt="Menú" class="icono-menu">
             </button>
             
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav mx-auto p-4 p-lg-0 enlaces-navegacion">
-                    <a href="index.html" class="nav-item nav-link">Home</a>
-                    <a href="#catalogo" class="nav-item nav-link ">Categorías</a>
-                    <a href="#productos" class="nav-item nav-link ">Productos</a>
-                    <a href="historia.html" class="nav-item nav-link active">Sobre Nosotros</a>
+            <div class="menu-enlaces" id="menuEnlaces">
+                <a href="index.html" class="enlace-normal">Home</a>
+                <a href="index.html#catalogo" class="enlace-normal">Categorías</a>
+                <a href="index.html#productos" class="enlace-normal">Productos</a>
+                <a href="historia.html" class="enlace-activo">Sobre Nosotros</a>
+            </div>
+            
+            <div class="bloque-telefono">
+                <div class="icono-circulo-telefono">
+                    <i class="fa fa-phone"></i>
                 </div>
-                
-                <div class="d-none d-lg-flex align-items-center bloque-contacto-telefono">
-                    <div class="icono-telefono flex-shrink-0 btn-lg-square border border-light rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="fa fa-phone text-light"></i>
-                    </div>
-                    <div class="ps-3">
-                        <small class="texto-llamada text-light text-opacity-50 mb-0 d-block">Llámanos</small>
-                        <p class="text-light fs-6 mb-0 fw-bold">+012 345 6789</p>
-                    </div>
+                <div class="datos-telefono">
+                    <small class="texto-pequeno">Llámanos</small>
+                    <p class="numero-telefono">+012 345 6789</p>
                 </div>
             </div>
         </div>
@@ -51,98 +50,99 @@
     <!--Fin del menu-->
 
     <!--Inicio de la info e imagenes-->
-<div class="info_inicial">
-    <div class="contenedor-carrusel">
-        <img src="assets/historia1.jpg" id="foto-1" class="foto_carru activa" alt="Foto 1">
-        <img src="assets/historia2.JPG" id="foto-2" class="foto_carru" alt="Foto 2">
-        <img src="assets/historia3.JPG" id="foto-3" class="foto_carru" alt="Foto 3">
-    </div>
-    <div class="texto_inicial">
-        <h1>¡Bienvenidos a Baker!</h1>
-        <p>Nacimos en el corazón de Reynosa, Tamaulipas, como un sueño familiar dedicado a mantener 
-            viva la magia de la panificación artesanal. Durante años, cada una de nuestras piezas ha sido 
-            elaborada a mano, horneada con paciencia y sazonada con el cariño de recetas tradicionales 
-            que trascienden generaciones. Hoy, abrimos las puertas de nuestro catálogo digital para que 
-            puedas conocer nuestra variedad diaria con la misma cercanía de siempre, pero desde la comodidad 
-            de tu pantalla. ¡Bienvenidos a nuestra mesa!</p>
-    </div>
-</div>
-
-<section id="datos-curiosos">
-  
-  <div class="datos-container">
-    
-    <!-- Tarjeta 1: El proceso artesanal -->
-    <div class="dat-card">
-      <div class="dat-icon">🍞</div>
-      <h3>Cero Máquinas, 100% Manos</h3>
-      <p>Cada una de nuestras piezas se amasa, moldea y decora completamente a mano.</p>
+    <div class="info_inicial">
+        <div class="contenedor-carrusel">
+            <img src="assets/historia1.jpg" id="foto-1" class="foto_carru activa" alt="Foto 1">
+            <img src="assets/historia2.JPG" id="foto-2" class="foto_carru" alt="Foto 2">
+            <img src="assets/historia3.JPG" id="foto-3" class="foto_carru" alt="Foto 3">
+        </div>
+        <div class="texto_inicial">
+            <h1>¡Bienvenidos a Baker!</h1>
+            <p>Nacimos en el corazón de Reynosa, Tamaulipas, como un sueño familiar dedicado a mantener 
+                viva la magia de la panificación artesanal. Durante años, cada una de nuestras piezas ha sido 
+                elaborada a mano, horneada con paciencia y sazonada con el cariño de recetas tradicionales 
+                que trascienden generaciones. Hoy, abrimos las puertas de nuestro catálogo digital para que 
+                puedas conocer nuestra variedad diaria con la misma cercanía de siempre, pero desde la comodidad 
+                de tu pantalla. ¡Bienvenidos a nuestra mesa!</p>
+        </div>
     </div>
 
-    <!-- Tarjeta 2: La frescura diaria -->
-    <div class="dat-card">
-      <div class="dat-icon">⏰</div>
-      <h3>Directo del Horno a tu Mesa</h3>
-      <p>Nuestra producción es del día. Se hornea en la madrugada para asegurar que llegue a tus manos con la máxima frescura, aroma y sabor tradicional.</p>
-    </div>
+    <section id="datos-curiosos">
+        <div class="datos-container">
+            <!-- Tarjeta 1: El proceso artesanal -->
+            <div class="dat-card">
+                <div class="dat-icon">🍞</div>
+                <h3>Cero Máquinas, 100% Manos</h3>
+                <p>Cada una de nuestras piezas se amasa, moldea y decora completamente a mano.</p>
+            </div>
 
-    <!-- Tarjeta 3: Las recetas secretas -->
-    <div class="dat-card">
-      <div class="dat-icon">📜</div>
-      <h3>Recetas con Historia</h3>
-      <p>Muchas de las variedades que disfrutas hoy están hechas con recetas familiares que se han cuidado y transmitido por años.</p>
-    </div>
+            <!-- Tarjeta 2: La frescura diaria -->
+            <div class="dat-card">
+                <div class="dat-icon">⏰</div>
+                <h3>Directo del Horno a tu Mesa</h3>
+                <p>Nuestra producción es del día. Se hornea en la madrugada para asegurar que llegue a tus manos con la máxima frescura, aroma y sabor tradicional.</p>
+            </div>
 
-    <!-- Tarjeta 4: El toque local (Reynosa) -->
-    <div class="dat-card">
-      <div class="dat-icon">🌵</div>
-      <h3>Orgullo de Reynosa</h3>
-      <p>Nacimos y crecimos en Reynosa, Tamaulipas. Somos un negocio local y familiar impulsado por adultos mayores.</p>
-    </div>
+            <!-- Tarjeta 3: Las recetas secretas -->
+            <div class="dat-card">
+                <div class="dat-icon">📜</div>
+                <h3>Recetas con Historia</h3>
+                <p>Muchas de las variedades que disfrutas hoy están hechas con recetas familiares que se han cuidado y transmitido por años.</p>
+            </div>
 
-  </div>
-</section>
+            <!-- Tarjeta 4: El toque local (Reynosa) -->
+            <div class="dat-card">
+                <div class="dat-icon">🌵</div>
+                <h3>Orgullo de Reynosa</h3>
+                <p>Nacimos y crecimos en Reynosa, Tamaulipas. Somos un negocio local y familiar impulsado por adultos mayores.</p>
+            </div>
+        </div>
+    </section>
 
-
-<!-- Contenedor de copyright -->
+    <!-- Contenedor de copyright -->
     <footer>
-    <div class="footer-container">
-        
-        <div class="footer-column">
-            <h3>Inicio</h3>
-            <ul>
-                <li><a href="#">Categorías</a></li>
-                <li><a href="#">Productos</a></li>
-                <li><a href="historia.html">Sobre Nosostros</a></li>
-            </ul>
-        </div>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Inicio</h3>
+                <ul>
+                    <li><a href="index.html#catalogo">Categorías</a></li>
+                    <li><a href="index.html#productos">Productos</a></li>
+                    <li><a href="historia.html">Sobre Nosotros</a></li>
+                </ul>
+            </div>
 
-        <div class="footer-column">
-            <h3>Administración</h3>
-            <ul>
-                <li><a href="login.html">Iniciar Sesión</a></li>
-            </ul>
-        </div>
+            <div class="footer-column">
+                <h3>Administración</h3>
+                <ul>
+                    <li><a href="login.html">Iniciar Sesión</a></li>
+                </ul>
+            </div>
 
-        <div class="footer-column">
-            <h3>Contactanos</h3>
-            <ul>
-                <li><a href="#">+012 345 6789</a></li>
-                <li><a href="#">panaderia@gmail.com></a></li>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Instagram</a></li>
-            </ul>
+            <div class="footer-column">
+                <h3>Contáctanos</h3>
+                <ul>
+                    <li><a href="#">+012 345 6789</a></li>
+                    <li><a href="#">panaderia@gmail.com</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
         </div>
-
-        </div>
-             <div class="footer-bottom">
+        <div class="footer-bottom">
              <p>&copy; <a href="#">Panadería</a>, Todos los derechos reservados</p>
              <p>. Diseñado para Exhibición Virtual</p>
         </div>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+        // Función indispensable para abrir el menú en dispositivos móviles
+        function controlarMenu() {
+            const menu = document.getElementById("menuEnlaces");
+            menu.classList.toggle("mostrar");
+        }
+
         let totalFotos = 3;
         let contador = 1;
         
