@@ -36,8 +36,10 @@
  
             if(usuarioValue === 'admin' && passwordValue === '1234') {
                 alert('Inicio de Sesión exitoso');
+                window.location.href = 'paneladmin.html';
                 password.value = '';
                 usuario.value = '';
+
             }else{
                 alert('Usuario o contraseña incorrectos');
  
