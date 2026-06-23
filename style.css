@@ -1,4 +1,4 @@
-/********** Template CSS **********/
+/********** Template CSS Personalizado **********/
 :root {
     --primary: #d4a373;    /* Tono dorado/pan artesanal principal */
     --secondary: #545454;
@@ -20,115 +20,173 @@ h1, h2, h3 {
     font-weight: 700;
 }
 
-.text-primary {
-    color: #d4a373 !important; 
-}
-
-.border-primary {
-    border-color: #d4a373 !important;
+/* El texto y bordes principales ahora adoptan el color de tu marca */
+.precio-texto, .etiqueta-producto-tipo, .titulo-seccion, .etiqueta-categoria h3 {
+    color: var(--primary);
 }
 
 
 /* ==========================================================================
    2. BOTONES GENERALES Y PERSONALIZADOS
    ========================================================================== */
-.btn {
+.boton-catalogo, .boton-ver-mas {
     font-weight: 500;
     transition: all 0.3s ease;
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.btn.btn-primary {
+/* Botón principal del Banner */
+.boton-catalogo {
     color: #FFFFFF;
-    background-color: #d4a373;
-    border-color: #d4a373;
+    background-color: var(--primary);
+    border: 1px solid var(--primary);
 }
 
-.btn-primary:hover {
+.boton-catalogo:hover {
     background-color: #b98453;
     border-color: #b98453;
     transform: translateY(-2px);
+    color: #FFFFFF;
 }
 
-.btn-outline-primary {
-    color: #d4a373;
-    border-color: #d4a373;
+/* Botón de las tarjetas de productos */
+.boton-ver-mas {
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    background-color: transparent;
+    width: 100%;
 }
 
-.btn-outline-primary:hover {
-    background-color: #d4a373;
-    border-color: #d4a373;
+.boton-ver-mas:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
     color: #fff;
 }
 
 
 /* ==========================================================================
-   3. NAVBAR FIJO Y ELEMENTOS DE CONTACTO (TELÉFONO)
+   3. CONTENEDOR 1: NAVBAR FIJO Y ELEMENTOS DE CONTACTO
    ========================================================================== */
-.navbar-custom {
-    background-color: #211C1A !important; /* Mismo color café rústico fijo COLOR BANNER */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); /* Sombra sutil para separar del fondo */
+.contenedor-1-inicio {
+    background-color: #211C1A; /* Café rústico fijo */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1030;
+    padding: 10px 50px;
 }
 
-.navbar-custom .logo-text {
-    color: #ffffff !important; /* Nombre de la marca en blanco */
+.menu-interno {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.menu-marca {
+    text-decoration: none;
+}
+
+.menu-marca .logo-texto {
+    color: #ffffff;
     font-size: 1.8rem;
+    margin: 0;
 }
 
-.navbar-custom .navbar-nav .nav-link {
-    padding: 20px 15px;
-    color: #ffffff !important; /* Enlaces en blanco */
+.menu-enlaces {
+    display: flex;
+    gap: 20px;
+}
+
+.menu-enlaces a {
+    text-decoration: none;
+    color: #ffffff;
     opacity: 0.85;
     transition: .3s;
+    padding: 10px 5px;
 }
 
-.navbar-custom .navbar-nav .nav-link:hover,
-.navbar-custom .navbar-nav .nav-link.active {
+.menu-enlaces a:hover,
+.menu-enlaces .enlace-activo {
     opacity: 1;
     font-weight: bold;
-    color: #796c66 !important; /* Resalte oscuro elegante al pasar el cursor o estar activo */
+    color: var(--primary); /* Resalte dorado de la marca */
 }
 
-.navbar-toggler {
+.menu-boton-movil {
     width: 50px;
     height: 50px;
     padding: 5px;
     background: transparent;
-}
-.navbar-toggler img {
-    height: 40px;
-    font-weight: 40px;
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
-    /*Referencia: https://developer.mozilla.org/es/docs/Web/CSS/Reference/Properties/filter*/
-}
-/* Clases añadidas para limpiar el contacto telefónico de la barra */
-.icono-telefono {
-    width: 40px; 
-    height: 40px;
+    border: none;
+    display: none; /* Se activa en pantallas pequeñas */
 }
 
-.texto-llamada {
+.menu-boton-movil .icono-menu {
+    height: 40px;
+    filter: invert(100%);
+}
+
+.bloque-telefono {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icono-circulo-telefono {
+    width: 40px; 
+    height: 40px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.datos-telefono .texto-pequeno {
     font-size: 0.8rem; 
     opacity: 0.8;
+    color: #fff;
+    display: block;
+}
+
+.datos-telefono .numero-telefono {
+    color: #fff;
+    font-weight: bold;
+    margin: 0;
 }
 
 /* Ajuste móvil de la navegación */
 @media (max-width: 991.98px) {
-    .navbar-custom .navbar-collapse {
-        background-color: #211C1A; /* <--- CAFÉ FUERTE DEL*/
-        padding: 10px;
-        border-radius: 0 0 10px 10px;
+    .menu-boton-movil {
+        display: block;
     }
-    .navbar-custom .navbar-nav .nav-link {
-        padding: 10px 0;
+    .menu-enlaces {
+        display: none; /* Bootstrap controla el colapso con clases nativas */
+    }
+    .contenedor-1-inicio {
+        padding: 10px 20px;
     }
 }
 
 
 /* ==========================================================================
-   4. HERO BANNER (PORTADA)
+   4. CONTENEDOR 2: HERO BANNER (PORTADA)
    ========================================================================== */
-.banner-bg {
+.contenedor-2-inicio {
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+.banner-fondo {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
                 url('assets/carrusel1.jpeg') no-repeat center center;
     background-size: cover;
@@ -136,39 +194,107 @@ h1, h2, h3 {
     display: flex;
     align-items: center;
     border-bottom: 5px solid #b98453;
-    padding-top: 80px; /* Margen superior para evitar que el menú tape el contenido */
+    padding-top: 80px; 
+}
+
+.banner-interior {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.columna-texto-banner {
+    max-width: 650px;
+    color: #fff;
+}
+
+.titulo-gigante {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.descripcion-banner {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
 }
 
 
 /* ==========================================================================
-   5. SECCIÓNES Y CATEGORÍAS
+   5. CONTENEDOR 3: SECCIÓN Y TARJETAS DE CATEGORÍAS
    ========================================================================== */
-/* Nueva clase para controlar el centrado y ancho del título de las secciones */
-.titulo-seccion-limite {
+.contenedor-3-inicio, .contenedor-4-inicio {
+    padding: 5rem 0;
+}
+
+.seccion-interior {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.bloque-titulo-central {
+    text-align: center;
     max-width: 500px;
+    margin: 0 auto 3rem auto;
 }
 
-.placeholder-image-box {
-    height: 180px;
-    background-color: #e9ecef;
-    background-image: repeating-linear-gradient(45deg, #f1f3f5, #f1f3f5 10px, #e9ecef 10px, #e9ecef 20px);
+.bloque-titulo-central h2 {
+    font-size: 2.5rem;
 }
 
-.categoria {
+.fila-tarjetas-categorias, .fila-tarjetas-productos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+}
+
+.columna-tarjeta-categoria, .columna-tarjeta-producto {
+    flex: 1 1 300px;
+    max-width: 380px;
+    width: 100%;
+}
+
+.caja-contenido-categoria {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    border: 1px solid #dee2e6;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.texto-centro {
+    text-align: center;
+}
+
+.etiqueta-categoria {
     display: inline-block;
-    border: 1px solid #d4a373;
-    color: #d4a373;
+    border: 1px solid var(--primary);
     padding: 6px 15px;
     border-radius: 50px;
-    font-weight: bold;
     margin-bottom: 15px;
 }
 
+.etiqueta-categoria h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.texto-gris {
+    color: #6c757d;
+    margin: 0;
+}
+
 
 /* ==========================================================================
-   6. TARJETAS DE PRODUCTOS
+   6. CONTENEDOR 4: TARJETAS DE PRODUCTOS
    ========================================================================== */
-.tarjeta-producto {
+.tarjeta-producto-caja {
     background-color: #ffffff;
     border-radius: 10px;
     overflow: hidden;
@@ -180,12 +306,12 @@ h1, h2, h3 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.tarjeta-producto:hover {
+.tarjeta-producto-caja:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
-.tarjeta-producto img {
+.imagen-producto {
     width: 100%;
     height: 240px;
     object-fit: cover;
@@ -206,15 +332,26 @@ h1, h2, h3 {
     color: #5c4d3c;
 }
 
-.precio {
-    color: #d4a373;
+.etiqueta-producto-tipo {
+    display: inline-block;
+    border: 1px solid var(--primary);
+    padding: 4px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.precio-texto {
     font-weight: bold;
     font-size: 22px;
     margin-bottom: 5px;
 }
 
-.disponibilidad {
+.disponibilidad-texto {
     color: #28a745;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
 }
 
 
@@ -265,10 +402,6 @@ h1, h2, h3 {
     margin-bottom: 15px;
 }
 
-.modal-producto p {
-    color: #4a3f35;
-}
-
 .modal-producto .cerrar {
     position: absolute;
     top: 15px;
@@ -291,70 +424,12 @@ h1, h2, h3 {
 
 
 /* ==========================================================================
-   8. FOOTER Y COPYRIGHT
+   8. FOOTER Y PIE DE PÁGINA
    ========================================================================== */
-.copyright {
-    background: #111111;
-}
-
-.copyright a {
-    color: var(--primary);
-}
-
-.copyright a:hover {
-    color: var(--light);
-}
-
-
-/* ==========================================================================
-   9. BOTÓN FLOTANTE IR ARRIBA (SCROLL TO TOP)
-   ========================================================================== */
-.btn-ir-arriba {
-    display: none; /* Oculto inicialmente hasta que se haga scroll */
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 99;
-    font-size: 40px;
-    border: none;
-    outline: none;
-    background-color: var(--primary);
-    color: white;
-    cursor: pointer;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.2s, transform 0.2s;
-}
-
-.btn-ir-arriba:hover {
-    background-color: #b98453;
-    transform: translateY(-3px); /* Pequeña elevación al posar el cursor */
-}
-
-/* ==========================================================================
-   8. FOOTER Y COPYRIGHT
-   ========================================================================== */
-
-
 footer {
     background-color: #1E1916;
 }
-.footer-column ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.footer-column a {
-    text-decoration: none;
-    color: #beb2b2;
-    display: inline-block;
-    padding: 5px 0;
-}
-.footer-column h3 {
-    color:#ded3d3;
-}
+
 .footer-container {
     display: flex;
     justify-content: space-between;
@@ -363,52 +438,120 @@ footer {
     margin: 0 auto;                
     padding: 40px 20px;
 }
-.footer-bottom{
-    display: flex;
-    justify-content: center;
-    color:#beb2b2
+
+.footer-column {
+    flex: 1 1 200px;
 }
 
+.footer-column h3 {
+    color: #ded3d3;
+    margin-bottom: 15px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column a {
+    text-decoration: none;
+    color: #beb2b2;
+    display: inline-block;
+    padding: 5px 0;
+    transition: color 0.2s;
+}
+
+.footer-column a:hover {
+    color: var(--primary);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    color: #beb2b2;
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-bottom a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+
 /* ==========================================================================
-   9. Parte dell login
+   9. BOTÓN FLOTANTE IR ARRIBA
    ========================================================================== */
-.login-html{
-    background-image: linear-gradient(rgba(52, 47, 41, 0.5), rgba(16, 9, 5, 0.607)),url(assets/loginimg.jpg);
+.btn-ir-arriba {
+    display: none; 
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    font-size: 30px;
+    border: none;
+    outline: none;
+    background-color: var(--primary);
+    color: white;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-ir-arriba:hover {
+    background-color: #b98453;
+    transform: translateY(-3px);
+}
+
+
+/* ==========================================================================
+   10. SECCIÓN LOGIN
+   ========================================================================== */
+.login-html {
+    background-image: linear-gradient(rgba(52, 47, 41, 0.5), rgba(16, 9, 5, 0.607)), url(assets/loginimg.jpg);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-size:cover;
+    background-size: cover;
     background-position: center;
-    height: auto;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
 }
 
-.login-container{
+.login-container {
     background-color: #fdfdfd;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgb(1, 1, 1, 2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     max-width: 250px;
-
+    width: 100%;
 }
-.login-title{
+
+.login-title {
     text-align: center;
     margin-bottom: 24px;
     color: #593216;
 }
-.form-login{
+
+.form-login {
     margin-bottom: 15px;
 }
-.form-login label{
+
+.form-login label {
     display: block;
     margin-bottom: 5px;
     font-size: 14px;
     font-weight: bold;
     color: #6f4528;
 }
-.form-login input{
+
+.form-login input {
     width: 100%;
     padding: 10px;
     border: 1px solid #1d1428;
@@ -416,12 +559,13 @@ footer {
     box-sizing: border-box;
     font-size: 14px;
 }
-.btn-login{
+
+.btn-login {
     width: 100%;
     padding: 10px;
     background-color: #6b3a0b;
     color: #cccccc;
-    border:none;
+    border: none;
     border-radius: 4px;
     font-size: 16px;
     font-weight: bold;
@@ -429,27 +573,25 @@ footer {
     transition: background-color 0.3s ease;
 }
 
-.btn-login:hover{
+.btn-login:hover {
     background-color: #3a1e0e;
 }
 
-/* ==========================================================================
-   9. CSS DE SOBRE NOSOTROS / HISTORIA
-   ========================================================================== */
 
+/* ==========================================================================
+   11. SOBRE NOSOTROS / HISTORIA
+   ========================================================================== */
 .historia_html {
     font-family: 'Roboto', sans-serif;
     background-color: #fcf9f5; 
     color: #4a3f35; 
     padding-top: 120px;
-
     display: flex;
     flex-direction: column;
     min-height: 100vh; 
     margin: 0;
 }
 
-/* Carrusel */
 .contenedor-carrusel {
     max-width: 650px;
     width: 100%;
@@ -460,7 +602,6 @@ footer {
     border-radius: 8px;
 }
 
-/* De base, todas las fotos están ocultas */
 .foto_carru {
     width: 100%;
     height: 350px;
@@ -469,7 +610,6 @@ footer {
     display: none; 
 }
 
-/* La foto que tenga esta clase SÍ se va a mostrar */
 .foto_carru.activa {
     display: block;
 }
@@ -485,68 +625,61 @@ footer {
     padding: 20px;
     flex-wrap: wrap;
 }
-.texto_inicial{
+
+.texto_inicial {
     flex: 1;              
     text-align: right;     
 }
-.texto_inicial p{
+
+.texto_inicial p, .texto_inicial h1 {
     text-align: center; 
 }
-.texto_inicial h1{
-    text-align: center; 
+
+.texto_inicial h1 {
     padding-bottom: 10px;
 }
 
-
-/* Contenedor principal de las tarjetas */
 .datos-container {
-  display: flex;           
-  flex-wrap: wrap;          
-  justify-content: center;  
-  gap: 24px;                
-  padding: 20px;            
-  max-width: 1200px;        
-  margin: 0 auto;          
+    display: flex;           
+    flex-wrap: wrap;          
+    justify-content: center;  
+    gap: 24px;                
+    padding: 20px;            
+    max-width: 1200px;        
+    margin: 0 auto;          
 }
 
-/* Estilo individual para cada tarjetita de dato curioso */
 .dat-card {
-  background-color: #ffeee0; 
-  border-radius: 12px;       
-  padding: 24px;
-  flex: 1 1 250px;
-  max-width: 320px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  text-align: center;
-  border: 1px solid #f0e6df;
-  width: 100%;
-  /* Efecto de transición suave para el Hover */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  align-items: center;
+    background-color: #ffeee0; 
+    border-radius: 12px;       
+    padding: 24px;
+    flex: 1 1 250px;
+    max-width: 320px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    border: 1px solid #f0e6df;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efecto visual cuando el usuario pasa el cursor sobre la tarjeta */
 .dat-card:hover {
-  transform: translateY(-5px); /* Eleva la tarjeta un poco */
-  box-shadow: 1 20px 30px rgba(117, 65, 29, 0.15); /* Aumenta la sombra (con un sutil tono marrón/cálido) */
+    transform: translateY(-5px); 
+    box-shadow: 0 20px 30px rgba(117, 65, 29, 0.15); 
 }
 
-/* Estilos para el emoji/icono dentro de la tarjeta */
 .dat-icon {
-  font-size: 2.5rem;         /* Hace el emoji más grande y vistoso */
-  margin-bottom: 12px;       /* Separa el icono del título */
+    font-size: 2.5rem;         
+    margin-bottom: 12px;       
 }
 
-/* Estilos para el título de la tarjeta */
 .dat-card h3 {
-  color: #5c3a21;
-  margin-bottom: 10px;
-  font-size: 30px;
+    color: #5c3a21;
+    margin-bottom: 10px;
+    font-size: 30px;
 }
 
-/* Estilos para el texto descriptivo */
 .dat-card p {
-  color: #6e6e6e;
-  font-size: 0.95rem;
-  line-height: 1.5;
+    color: #6e6e6e;
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
