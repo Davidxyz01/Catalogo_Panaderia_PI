@@ -69,7 +69,7 @@ h1, h2, h3 {
 
 
 /* ==========================================================================
-   3. CONTENEDOR 1: NAVBAR FIJO Y ELEMENTOS DE CONTACTO
+   3. CONTENEDOR 1: NAVBAR FIJO Y ELEMENTOS DE CONTACTO (MENÚ)
    ========================================================================== */
 .contenedor-1-inicio {
     background-color: #211C1A; /* Café rústico fijo */
@@ -88,6 +88,7 @@ h1, h2, h3 {
     align-items: center;
     max-width: 1400px;
     margin: 0 auto;
+    position: relative;
 }
 
 .menu-marca {
@@ -123,10 +124,10 @@ h1, h2, h3 {
 .menu-boton-movil {
     width: 50px;
     height: 50px;
-    padding: 5px;
     background: transparent;
     border: none;
-    display: none; /* Se activa en pantallas pequeñas */
+    display: none; /* Oculto en computadoras de escritorio */
+    cursor: pointer;
 }
 
 .menu-boton-movil .icono-menu {
@@ -164,16 +165,34 @@ h1, h2, h3 {
     margin: 0;
 }
 
-/* Ajuste móvil de la navegación */
+/* --- ESTILOS RESPONSIVE PARA EL MENÚ EN CELULARES --- */
 @media (max-width: 991.98px) {
     .menu-boton-movil {
-        display: block;
+        display: block; /* Muestra el botón de hamburguesa/pan */
     }
+
+    .bloque-telefono {
+        display: none; /* Oculta el teléfono para liberar espacio */
+    }
+
     .menu-enlaces {
-        display: none; /* Bootstrap controla el colapso con clases nativas */
+        display: none; /* Esconde el menú por defecto */
+        flex-direction: column; /* Alinea los enlaces uno debajo de otro */
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #211C1A;
+        padding: 20px;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+        gap: 15px;
+        z-index: 100;
     }
-    .contenedor-1-inicio {
-        padding: 10px 20px;
+
+    /* Clase especial que activa el JS para abrir el menú */
+    .menu-enlaces.mostrar {
+        display: flex; 
     }
 }
 
