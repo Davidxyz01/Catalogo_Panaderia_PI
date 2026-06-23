@@ -369,10 +369,10 @@ h1, h2, h3 {
 }
 
 /* ==========================================================================
-   5. CONTENEDOR 3: SECCIÓN Y TARJETAS DE CATEGORÍAS
+   5. CONTENEDOR 3: SECCIÓN 
    ========================================================================== */
-.contenedor-3-inicio, .contenedor-4-inicio {
-    padding: 5rem 0;
+.contenedor-4-inicio {
+    padding:30px;
 }
 
 .seccion-interior {
@@ -391,52 +391,19 @@ h1, h2, h3 {
     font-size: 2.5rem;
 }
 
-.fila-tarjetas-categorias, .fila-tarjetas-productos {
+.fila-tarjetas-productos {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
     justify-content: center;
 }
 
-.columna-tarjeta-categoria, .columna-tarjeta-producto {
+.columna-tarjeta-producto {
     flex: 1 1 300px;
     max-width: 380px;
     width: 100%;
 }
 
-.caja-contenido-categoria {
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 24px;
-    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
-    border: 1px solid #dee2e6;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.texto-centro {
-    text-align: center;
-}
-
-.etiqueta-categoria {
-    display: inline-block;
-    border: 1px solid var(--primary);
-    padding: 6px 15px;
-    border-radius: 50px;
-    margin-bottom: 15px;
-}
-
-.etiqueta-categoria h3 {
-    margin: 0;
-    font-size: 1.2rem;
-}
-
-.texto-gris {
-    color: #6c757d;
-    margin: 0;
-}
 
 /* ==========================================================================
    6. CONTENEDOR 4: TARJETAS DE PRODUCTOS
