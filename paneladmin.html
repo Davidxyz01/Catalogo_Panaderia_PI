@@ -8,7 +8,7 @@
     <!-- Fuentes originales -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Iconos originales -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -19,6 +19,12 @@
 <body>
 
     <!-- MENÚ DE NAVEGACIÓN SUPERIOR -->
+    <script>
+        // Bloquea el acceso directo al panel si no se inició sesión desde login.html
+        if (sessionStorage.getItem('adminLogueado') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
     <nav class="navbar-custom">
         <div class="navbar-container">
             <a href="index.html" class="logo-text">Baker</a>
@@ -27,71 +33,63 @@
     </nav>
 
     <!-- CONTENEDOR PRINCIPAL -->
-    <main class="container">
-        
-        <!-- VISTA CENTRAL: MENÚ DE OPCIONES DEL ADMINISTRADOR -->
-        <div id="menuPanelAdmin">
-            <div class="text-center mb-5">
-                <h2>Bienvenido al Panel de Control</h2>
-                <p class="text-muted">Selecciona una operación para gestionar el catálogo</p>
-            </div>
-            
-            <div class="grid-menu-admin">
-                <!-- Opción 1 -->
-                <div class="tarjeta-opcion" onclick="mostrarSeccion('secAnadir')">
-                    <i class="bi bi-plus-circle-fill"></i>
-                    <h3>Añadir Producto</h3>
-                </div>
-
-                <!-- Opción 2 -->
-                <div class="tarjeta-opcion" onclick="mostrarSeccion('secEliminar')">
-                    <i class="bi bi-trash-fill"></i>
-                    <h3>Eliminar Producto</h3>
-                </div>
-
-                <!-- Opción 3 -->
-                <div class="tarjeta-opcion" onclick="mostrarSeccion('secVisualizar')">
-                    <i class="bi bi-eye-fill"></i>
-                    <h3>Visualizar Productos</h3>
-                </div>
-
-                <!-- Opción 4 -->
-                <div class="tarjeta-opcion opcion-salir" onclick="cerrarSesionAdmin()">
-                    <i class="bi bi-box-arrow-left"></i>
-                    <h3>Cerrar Sesión</h3>
-                </div>
-            </div>
-        </div>
+    <main class="admin-layout">
 
         <!-- ==========================================================================
-           SECCIONES INTERNAS
-           ========================================================================== */ -->
+           MENÚ LATERAL FIJO — presente en TODAS las secciones del panel
+           ========================================================================== -->
+        <aside class="sidebar-admin">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item" data-target="secVisualizar" onclick="irASidebar('secVisualizar')">
+                    <i class="bi bi-eye-fill"></i> Visualizar y editar
+                </li>
+                <li class="sidebar-item" data-target="secAnadir" onclick="irASidebar('secAnadir')">
+                    <i class="bi bi-plus-circle-fill"></i> Añadir producto
+                </li>
+                <li class="sidebar-item sidebar-salir" onclick="cerrarSesionAdmin()">
+                    <i class="bi bi-box-arrow-left"></i> Cerrar sesión
+                </li>
+            </ul>
+        </aside>
 
-        <!-- SECCIÓN: AÑADIR PRODUCTO (CON PREVISUALIZACIÓN DE IMAGEN) -->
-        <div id="secAnadir" class="seccion-admin">
-            <button class="btn-regresar" onclick="regresarAlMenu()"><i class="bi bi-arrow-left"></i> Regresar al Panel</button>
-            <h2 class="mb-4">Añadir Nuevo Producto</h2>
-            <form onsubmit="event.preventDefault(); alert('Producto añadido (Simulación)'); limpiarFormularioAnadir(); regresarAlMenu();">
+        <!-- ==========================================================================
+           CONTENIDO: cambia según la opción del menú lateral seleccionada
+           ========================================================================== -->
+        <div class="contenido-admin">
+
+            <!-- VISTA DE BIENVENIDA (se muestra solo al entrar al panel) -->
+            <div id="menuPanelAdmin">
+                <div class="text-center mb-5">
+                    <h2>Bienvenido al Panel de Control</h2>
+                    <p class="text-muted">Selecciona una operación en el menú para gestionar el catálogo</p>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: AÑADIR PRODUCTO (CON PREVISUALIZACIÓN DE IMAGEN) -->
+            <div id="secAnadir" class="seccion-admin">
+                <h2 class="mb-4">Añadir Nuevo Producto</h2>
+            <form id="formProducto">
                 <div class="form-group">
                     <label>Nombre del Producto:</label>
-                    <input type="text" class="form-control" required placeholder="Ej. Croissant de Mantequilla">
+                    <input type="text" id="nombreProducto" class="form-control" required placeholder="Ej. Croissant de Mantequilla">
                 </div>
                 <div class="form-group">
                     <label>Categoría:</label>
-                    <select class="form-control">
-                        <option>Pan dulce</option>
-                        <option>Pan salado</option>
-                        <option>Pan sin gluten</option>
-                        <option>Pasteles</option>
+                    <select class="form-control" id="categoriaProducto">
+                        <option value="Pan dulce">Pan dulce</option>
+                        <option value="Pan salado">Pan salado</option>
+                        <option value="Pan sin gluten">Pan sin gluten</option>
+                        <option value="Pasteles">Pasteles</option>
+                        <option value="Galletas">Galletas</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Precio ($):</label>
-                    <input type="number" class="form-control" required placeholder="Ej. 25">
+                    <input type="number" id="precioProducto" class="form-control" required placeholder="Ej. 25">
                 </div>
                 <div class="form-group">
                     <label>Ingredientes:</label>
-                    <input type="text" class="form-control" placeholder="Ej. Harina, mantequilla, azúcar">
+                    <input type="text" id="ingredientesProducto" class="form-control" placeholder="Ej. Harina, mantequilla, azúcar">
                 </div>
                 
                 <!-- NUEVO CAMPO: SELECCIONAR IMAGEN -->
@@ -110,79 +108,93 @@
             </form>
         </div>
 
-        <!-- SECCIÓN: ELIMINAR PRODUCTO -->
-        <div id="secEliminar" class="seccion-admin">
-            <button class="btn-regresar" onclick="regresarAlMenu()"><i class="bi bi-arrow-left"></i> Regresar al Panel</button>
-            <h2 class="mb-4">Eliminar Productos del Catálogo</h2>
-            <p class="text-muted">Haz clic en el botón de eliminar para dar de baja un producto.</p>
-            
-            <table class="tabla-productos">
-                <thead>
-                    <tr>
-                        <th>Producto</th>
-                        <th>Categoría</th>
-                        <th>Precio</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Pastel de Chocolate</td>
-                        <td>Pasteles</td>
-                        <td>$350</td>
-                        <td><button class="btn-action-del" onclick="alert('Producto eliminado')">Eliminar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Concha</td>
-                        <td>Pan dulce</td>
-                        <td>$12</td>
-                        <td><button class="btn-action-del" onclick="alert('Producto eliminado')">Eliminar</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
         <!-- SECCIÓN: VISUALIZAR PRODUCTOS -->
         <div id="secVisualizar" class="seccion-admin">
-            <button class="btn-regresar" onclick="regresarAlMenu()"><i class="bi bi-arrow-left"></i> Regresar al Panel</button>
             <h2 class="mb-4">Inventario Actual de Productos</h2>
-            
+
+            <!-- BARRA DE BÚSQUEDA Y ORDENAMIENTO -->
+            <div class="barra-busqueda-admin">
+                <div class="campo-buscador">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="buscadorProductos" class="form-control" placeholder="Buscar producto por nombre o categoría...">
+                    <i class="fas fa-times-circle limpiar-busqueda" id="btnLimpiarBusqueda" title="Limpiar búsqueda" style="display:none;"></i>
+                </div>
+                <button type="button" id="btnOrdenAZ" class="btn-orden" title="Ordenar A-Z">
+                    Nombre <i class="fas fa-sort-alpha-down"></i>
+                </button>
+            </div>
+
             <table class="tabla-productos">
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Imagen</th>
                         <th>Nombre</th>
                         <th>Categoría</th>
                         <th>Precio</th>
                         <th>Estado</th>
+                        <th>Acción</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>#001</td>
-                        <td>Pastel de Chocolate</td>
-                        <td>Pasteles</td>
-                        <td>$350</td>
-                        <td style="color: var(--success); font-weight: bold;">Disponible</td>
-                    </tr>
-                    <tr>
-                        <td>#002</td>
-                        <td>Concha</td>
-                        <td>Pan dulce</td>
-                        <td>$12</td>
-                        <td style="color: var(--success); font-weight: bold;">Disponible</td>
-                    </tr>
-                    <tr>
-                        <td>#003</td>
-                        <td>Bolillo</td>
-                        <td>Pan salado</td>
-                        <td>$5</td>
-                        <td style="color: var(--success); font-weight: bold;">Disponible</td>
-                    </tr>
-                </tbody>
+                <tbody id="tablaCuerpoVisualizar"></tbody>
             </table>
         </div>
 
+        <div id="secEditarProducto" class="seccion-admin" style="display: none;">
+            <button class="btn-regresar" onclick="irASidebar('secVisualizar')"><i class="bi bi-arrow-left"></i> Volver al Inventario</button>
+            <h2 class="mb-4">Editar Datos del Producto</h2>
+            
+            <form id="formEditarProducto">
+                <!-- Campos ocultos de control -->
+                <input type="hidden" id="editIdProducto">
+                <input type="hidden" id="editImagenActualProducto">
+
+                <div class="form-group">
+                    <label for="editNombreProducto">Nombre del Producto:</label>
+                    <input type="text" id="editNombreProducto" class="form-control" required placeholder="Ej. Croissant de Mantequilla">
+                </div>
+
+                <div class="form-group">
+                    <label for="editCategoriaProducto">Categoría:</label>
+                    <select id="editCategoriaProducto" class="form-control" required>
+                        <option value="Pan dulce">Pan dulce</option>
+                        <option value="Pan salado">Pan salado</option>
+                        <option value="Pan sin gluten">Pan sin gluten</option>
+                        <option value="Pasteles">Pasteles</option>
+                        <option value="Galletas">Galletas</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="editPrecioProducto">Precio ($):</label>
+                    <input type="number" step="0.01" id="editPrecioProducto" class="form-control" required placeholder="Ej. 25">
+                </div>
+
+                <div class="form-group">
+                    <label for="editEstadoProducto">Disponibilidad / Estado:</label>
+                    <select id="editEstadoProducto" class="form-control" required>
+                        <option value="Disponible">Disponible</option>
+                        <option value="Agotado">Agotado</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="editIngredientesProducto">Ingredientes / Descripción:</label>
+                    <input type="text" id="editIngredientesProducto" class="form-control" placeholder="Ej. Harina, mantequilla, azúcar">
+                </div>
+
+                <div class="form-group">
+                    <label for="editInputImagen">Cambiar Imagen del Producto (Opcional):</label>
+                    <input type="file" id="editInputImagen" class="form-control" accept="image/*">
+                    <p class="text-muted" style="font-size: 0.85rem; margin-top: 5px;">Si no seleccionas ningún archivo, se mantendrá la imagen actual.</p>
+                </div>
+
+                <button type="button" class="btn-submit" style="background-color: #d87c20; margin-top: 10px;" onclick="guardarCambiosEditar()">Guardar Cambios</button>
+                <button type="button" class="btn-submit" style="background-color: var(--secondary); margin-top: 10px;" onclick="irASidebar('secVisualizar')">Cancelar</button>
+            </form>
+        </div>
+
+        </div> <!-- fin .contenido-admin -->
     </main>
 
     <!-- FOOTER -->
@@ -193,66 +205,53 @@
     </footer>
 
     <!-- LÓGICA JAVASCRIPT NATIVO -->
-    <script>
-        // Escuchador para detectar cuando el admin selecciona una foto
-        document.addEventListener("DOMContentLoaded", function() {
-            const inputImagen = document.getElementById('inputImagen');
-            const vistaPreviaCaja = document.getElementById('vistaPreviaCaja');
-            const imagenPreviaElemento = document.getElementById('imagenPreviaElemento');
-
-            inputImagen.addEventListener('change', function() {
-                const archivo = this.files[0]; // Captura el archivo seleccionado
-                
-                if (archivo) {
-                    const lector = new FileReader(); // API nativa para leer archivos locales
-                    
-                    lector.addEventListener('load', function() {
-                        // Cambiamos el origen del tag de imagen por el archivo leído procesado
-                        imagenPreviaElemento.setAttribute('src', this.result);
-                        // Hacemos visible el contenedor de la imagen previa
-                        vistaPreviaCaja.style.display = 'block';
-                    });
-                    
-                    lector.readAsDataURL(archivo); // Convierte la imagen a cadena Base64 para mostrarla
-                } else {
-                    // Si se cancela la selección, ocultamos la previsualización
-                    vistaPreviaCaja.style.display = 'none';
-                    imagenPreviaElemento.setAttribute('src', '');
-                }
-            });
-        });
-
-        // Limpia la imagen previa al finalizar o cancelar el guardado
-        function limpiarFormularioAnadir() {
-            document.getElementById('inputImagen').value = "";
-            document.getElementById('vistaPreviaCaja').style.display = 'none';
-            document.getElementById('imagenPreviaElemento').setAttribute('src', '');
-        }
-
-        // Función para cambiar de ventanas ocultando el menú principal
+<script>
+        // Oculta la bienvenida y todas las secciones, y muestra solo la solicitada
         function mostrarSeccion(idSeccion) {
             document.getElementById('menuPanelAdmin').style.display = 'none';
-            
+
             const secciones = document.querySelectorAll('.seccion-admin');
             secciones.forEach(sec => sec.style.display = 'none');
-            
+
             document.getElementById(idSeccion).style.display = 'block';
         }
 
-        // Función para volver al estado inicial de las opciones
-        function regresarAlMenu() {
-            const secciones = document.querySelectorAll('.seccion-admin');
-            secciones.forEach(sec => sec.style.display = 'none');
-            
-            limpiarFormularioAnadir(); // Resetea la previa por si acaso
-            document.getElementById('menuPanelAdmin').style.display = 'block';
+        // Resalta visualmente la opción activa dentro del menú lateral
+        function marcarActivoSidebar(elemento) {
+            document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('activo'));
+            if (elemento) elemento.classList.add('activo');
+        }
+
+        // Punto central de navegación: usado por el menú lateral en TODAS las secciones
+        // para mantener el comportamiento consistente sin importar desde dónde se llame
+        function navegarSidebar(idSeccion, elemento) {
+            mostrarSeccion(idSeccion);
+            marcarActivoSidebar(elemento);
+
+            // Refrescamos los datos correspondientes cada vez que se entra a la sección
+            if (idSeccion === 'secVisualizar' && typeof cargarProductosParaVisualizar === 'function') {
+                cargarProductosParaVisualizar();
+            }
+            if (idSeccion === 'secAnadir' && typeof limpiarFormularioAnadir === 'function') {
+                limpiarFormularioAnadir();
+            }
+        }
+
+        // Atajo para navegar por id de sección, usado también fuera del menú lateral
+        // (ej. el botón "Cancelar" del formulario de edición)
+        function irASidebar(idSeccion) {
+            const elemento = document.querySelector('.sidebar-item[data-target="' + idSeccion + '"]');
+            navegarSidebar(idSeccion, elemento);
         }
 
         function cerrarSesionAdmin() {
             if(confirm("¿Estás seguro de que deseas cerrar sesión del Panel Administrativo?")) {
+                sessionStorage.removeItem('adminLogueado');
                 window.location.href = "index.html"; 
             }
         }
     </script>
+
+    <script src="scriptBD.js"></script>
 </body>
 </html>

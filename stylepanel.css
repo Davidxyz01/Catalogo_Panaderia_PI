@@ -17,7 +17,7 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #fcf9f5; 
     color: #4a3f35; 
-    padding-top: 100px; 
+    padding-top: 74px; 
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -50,19 +50,25 @@ body {
             top: 0;
             left: 0;
             width: 100%;
+            height: 74px;
+            display: flex;
+            align-items: center;
             z-index: 1030;
-            padding: 15px 30px;
+            padding: 0 30px;
         }
 
         .navbar-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .navbar-custom .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
             color: #ffffff; 
             font-size: 1.8rem;
             text-decoration: none;
@@ -78,7 +84,118 @@ body {
         }
 
         /* ==========================================================================
-           PANEL PRINCIPAL DE OPCIONES (MENU ADMIN)
+           LAYOUT CON MENÚ LATERAL (SIDEBAR) — presente en todas las secciones
+           ========================================================================== */
+        .admin-layout {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+            flex-grow: 1;
+        }
+
+        .sidebar-admin {
+            background-color: #5c4a3a;
+            border-radius: 0;
+            padding: 30px 0;
+            width: 250px;
+            flex-shrink: 0;
+            box-shadow: 2px 0 6px rgba(0,0,0,0.08);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            position: sticky;
+            top: 74px;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 22px;
+            color: #f1ece6;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+            transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+        }
+
+        .sidebar-item i {
+            font-size: 1.1rem;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+
+        .sidebar-item:hover {
+            background-color: rgba(212, 163, 115, 0.12);
+        }
+
+        .sidebar-item.activo {
+            background-color: rgba(212, 163, 115, 0.18);
+            border-left: 3px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .sidebar-salir {
+            margin-top: 12px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-salir:hover {
+            background-color: rgba(220, 53, 69, 0.15);
+        }
+
+        .sidebar-salir i {
+            color: #e88a8a;
+        }
+
+        .contenido-admin {
+            flex-grow: 1;
+            min-width: 0;
+            padding: 55px 60px;
+        }
+
+        @media (max-width: 768px) {
+            .admin-layout {
+                flex-direction: column;
+            }
+            .sidebar-admin {
+                width: 100%;
+            }
+            .sidebar-menu {
+                position: static;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .sidebar-item {
+                border-left: none;
+                border-bottom: 3px solid transparent;
+            }
+            .sidebar-item.activo {
+                border-left: none;
+                border-bottom: 3px solid var(--primary);
+            }
+            .sidebar-item.sidebar-salir {
+                flex: 1 1 100%;
+                justify-content: center;
+                border-top: 1px solid rgba(255,255,255,0.15);
+                border-bottom: none;
+            }
+            .contenido-admin {
+                padding: 25px 16px;
+            }
+        }
+
+        /* ==========================================================================
+           PANEL PRINCIPAL DE OPCIONES (MENU ADMIN) — ya no se usa como menú,
+           se deja por si se reutiliza en otra vista
            ========================================================================== */
         .grid-menu-admin {
             display: grid;
@@ -211,6 +328,70 @@ body {
         }
         .btn-submit:hover { background-color: #b98453; }
 
+        /* Barra de búsqueda y ordenamiento del inventario */
+        .barra-busqueda-admin {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .campo-buscador {
+            position: relative;
+            flex: 1;
+            min-width: 220px;
+        }
+        .campo-buscador i.fa-search {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary);
+            opacity: 0.6;
+        }
+        .campo-buscador input#buscadorProductos {
+            padding-left: 36px;
+            padding-right: 34px;
+            margin-bottom: 0;
+        }
+        .campo-buscador input#buscadorProductos:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(212, 163, 115, 0.25);
+        }
+        .campo-buscador .limpiar-busqueda {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary);
+            opacity: 0.6;
+            cursor: pointer;
+        }
+        .campo-buscador .limpiar-busqueda:hover { opacity: 1; }
+        .btn-orden {
+            background-color: white;
+            border: 1px solid #ccc;
+            color: var(--secondary);
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .btn-orden:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background-color: #fdf5eb;
+        }
+        .fila-sin-resultados td { font-size: 0.95rem; }
+
+        @media (max-width: 576px) {
+            .barra-busqueda-admin { flex-direction: column; align-items: stretch; }
+            .btn-orden { width: 100%; }
+        }
+
         /* Tabla de Productos */
         .tabla-productos {
             width: 100%;
@@ -234,6 +415,113 @@ body {
             cursor: pointer;
         }
 
+        /* Acciones de la fila: íconos de Editar (lápiz) y Eliminar (basura) */
+        .acciones-fila {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn-icono {
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: white;
+            transition: background-color 0.3s ease, transform 0.15s ease;
+        }
+        .btn-icono:hover {
+            transform: translateY(-1px);
+        }
+        .btn-icono-editar {
+            background-color: #d87c20;
+        }
+        .btn-icono-editar:hover {
+            background-color: #905218;
+        }
+        .btn-icono-eliminar {
+            background-color: #dc3545;
+        }
+        .btn-icono-eliminar:hover {
+            background-color: #961c28;
+        }
+
+        /* ==========================================================================
+           TABLA DE PRODUCTOS RESPONSIVA (móvil)
+           Convierte cada fila de la tabla en una tarjeta apilada cuando la
+           pantalla es angosta, en vez de desbordarse o cortarse.
+           ========================================================================== */
+        @media (max-width: 768px) {
+            .tabla-productos thead {
+                display: none; /* Ocultamos encabezados, cada dato lleva su propia etiqueta */
+            }
+            .tabla-productos, .tabla-productos tbody,
+            .tabla-productos tr, .tabla-productos td {
+                display: block;
+                width: 100%;
+            }
+            .tabla-productos tr {
+                margin-bottom: 16px;
+                border: 1px solid #dee2e6;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            }
+            .tabla-productos td {
+                border: none;
+                border-bottom: 1px solid #f0f0f0;
+                padding: 10px 12px 10px 45%;
+                position: relative;
+                min-height: 20px;
+                text-align: right;
+                word-break: break-word;
+            }
+            .tabla-productos td:last-child {
+                border-bottom: none;
+            }
+            /* La etiqueta de cada dato se toma de data-label, definido en el JS */
+            .tabla-productos td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 12px;
+                width: 40%;
+                text-align: left;
+                font-weight: bold;
+                color: var(--primary);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            /* Celda de imagen y de acción se ven mejor centradas, sin recorte */
+            .tabla-productos td[data-label="Imagen"] {
+                text-align: center;
+                padding-left: 12px;
+                background-color: #faf7f4;
+            }
+            .tabla-productos td[data-label="Imagen"]::before {
+                display: none;
+            }
+            .tabla-productos td[data-label="Acción"] {
+                text-align: center;
+                padding-left: 12px;
+            }
+            .tabla-productos td[data-label="Acción"]::before {
+                display: none;
+            }
+            .tabla-productos td[data-label="Acción"] .acciones-fila {
+                justify-content: center;
+            }
+            .tabla-productos td[data-label="Acción"] .btn-icono {
+                flex: 1;
+                max-width: 120px;
+            }
+        }
+
         /* ==========================================================================
            FOOTER
            ========================================================================== */
@@ -242,5 +530,5 @@ body {
             color: #beb2b2;
             text-align: center;
             padding: 20px;
-            margin-top: 4rem;
         }
+        

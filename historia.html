@@ -13,8 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylehistory.css">
 </head>
 <body class="historia_html">
 
@@ -27,15 +26,16 @@
             
             <!-- BOTÓN CORREGIDO CON ICONO DE FONT AWESOME -->
             <button type="button" class="menu-boton-movil" onclick="controlarMenu()">
-                <i class="fa fa-bars" style="color: white; font-size: 1.5rem;"></i>
+                <img src="assets/menupan.svg" alt="Menú" class="icono-menu">
             </button>
             
+            <!-- 3. Enlaces -->
             <div class="menu-enlaces" id="menuEnlaces">
                 <a href="index.html" class="enlace-normal">Home</a>
-                <a href="index.html#catalogo" class="enlace-normal">Categorías</a>
-                <a href="index.html#productos" class="enlace-normal">Productos</a>
+                <a href="categorias.html" class="enlace-normal">Catálogo</a>
                 <a href="historia.html" class="enlace-activo">Sobre Nosotros</a>
             </div>
+
             
             <div class="bloque-telefono">
                 <div class="icono-circulo-telefono">
@@ -50,54 +50,169 @@
     </nav>
     <!--Fin del menu-->
 
-    <!--Inicio de la info e imagenes-->
-    <div class="info_inicial">
-        <div class="contenedor-carrusel">
-            <img src="assets/historia1.jpg" id="foto-1" class="foto_carru activa" alt="Foto 1">
-            <img src="assets/historia2.JPG" id="foto-2" class="foto_carru" alt="Foto 2">
-            <img src="assets/historia3.JPG" id="foto-3" class="foto_carru" alt="Foto 3">
-        </div>
-        <div class="texto_inicial">
-            <h1>¡Bienvenidos a Baker!</h1>
-            <p>Nacimos en el corazón de Reynosa, Tamaulipas, como un sueño familiar dedicado a mantener 
-                viva la magia de la panificación artesanal. Durante años, cada una de nuestras piezas ha sido 
-                elaborada a mano, horneada con paciencia y sazonada con el cariño de recetas tradicionales 
-                que trascienden generaciones. Hoy, abrimos las puertas de nuestro catálogo digital para que 
-                puedas conocer nuestra variedad diaria con la misma cercanía de siempre, pero desde la comodidad 
-                de tu pantalla. ¡Bienvenidos a nuestra mesa!</p>
-        </div>
-    </div>
+    <!-- =============================================
+         SECCIÓN SOBRE NOSOTROS MEJORADA
+         ============================================= -->
+    <section class="nosotros-seccion">
 
-    <section id="datos-curiosos">
+        <!-- Bloque superior: collage + texto -->
+        <div class="nosotros-layout">
+
+            <!-- COLLAGE DE IMÁGENES (izquierda) -->
+            <div class="nosotros-collage">
+                <div class="collage-foto-grande">
+                    <img src="assets/img1.jpg" id="foto-1" class="foto_carru activa" alt="Panadería Baker">
+                    <img src="assets/img2.jpg" id="foto-2" class="foto_carru" alt="Nuestro pan">
+                    <img src="assets/img3.jpg" id="foto-3" class="foto_carru" alt="Tradición artesanal">
+                </div>
+                <div class="collage-etiqueta">
+                    <span class="collage-etiqueta-anno">Est.</span> <!-- Creación (fecha) -->
+                    <span class="collage-etiqueta-num">2026</span>
+                    <span class="collage-etiqueta-texto">Reynosa, Tamps.</span>
+                </div>
+            </div>
+
+            <!-- TEXTO (derecha) -->
+            <div class="nosotros-texto">
+                <div class="nosotros-eyebrow">
+                    <span class="nosotros-eyebrow-linea"></span>
+                    <span class="nosotros-eyebrow-label">Nosotros</span>
+                    <span class="nosotros-eyebrow-linea"></span>
+                </div>
+
+                <h1 class="nosotros-titulo">
+                    ¡Bienvenidos a <em>Baker!</em>
+                </h1>
+
+                <p class="nosotros-descripcion">
+                    Nacimos en el corazón de Reynosa, Tamaulipas, como un sueño familiar dedicado a mantener 
+                    viva la magia de la panificación artesanal. Cada pieza es elaborada a mano, horneada con 
+                    paciencia y sazonada con el cariño de recetas tradicionales que trascienden generaciones.
+                </p>
+
+                <p class="nosotros-descripcion">
+                    Hoy abrimos las puertas de nuestro catálogo digital para que puedas conocer nuestra 
+                    variedad diaria con la misma cercanía de siempre. ¡Bienvenidos a nuestra mesa!
+                </p>
+
+                <!-- Estadísticas -->
+                <div class="nosotros-stats">
+                    <div class="stat-item">
+                        <span class="stat-num">100%</span>
+                        <span class="stat-label">Artesanal</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">Diario</span>
+                        <span class="stat-label">Recién horneado</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">Local</span>
+                        <span class="stat-label">Orgullo Regio</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TARJETAS DE DATOS -->
         <div class="datos-container">
-            <!-- Tarjeta 1: El proceso artesanal -->
-            <div class="dat-card">
-                <div class="dat-icon">🍞</div>
-                <h3>Cero Máquinas, 100% Manos</h3>
-                <p>Cada una de nuestras piezas se amasa, moldea y decora completamente a mano.</p>
+            <!-- Tarjeta 1 -->
+            <div class="dat-card" onclick="this.classList.toggle('activa')">
+                <div class="dat-card-frente">
+                    <div class="dat-icon"><i class="fas fa-bread-slice"></i></div>
+                    <h3>Cero Máquinas, 100% Manos</h3>
+                </div>
+                <div class="dat-card-reverso">
+                    <div class="rev-icon"><i class="fas fa-bread-slice"></i></div>
+                    <h3>Cero Máquinas, 100% Manos</h3>
+                    <p>Cada una de nuestras piezas se amasa, moldea y decora completamente a mano.</p>
+                </div>
             </div>
 
-            <!-- Tarjeta 2: La frescura diaria -->
-            <div class="dat-card">
-                <div class="dat-icon">⏰</div>
-                <h3>Directo del Horno a tu Mesa</h3>
-                <p>Nuestra producción es del día. Se hornea en la madrugada para asegurar que llegue a tus manos con la máxima frescura, aroma y sabor tradicional.</p>
+            <!-- Tarjeta 2 -->
+            <div class="dat-card" onclick="this.classList.toggle('activa')">
+                <div class="dat-card-frente">
+                    <div class="dat-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Directo del Horno a tu Mesa</h3>
+                </div>
+                <div class="dat-card-reverso">
+                    <div class="rev-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Directo del Horno a tu Mesa</h3>
+                    <p>Nuestra producción es del día. Se hornea en la madrugada para asegurar que llegue a tus manos con la máxima frescura, aroma y sabor tradicional.</p>
+                </div>
             </div>
 
-            <!-- Tarjeta 3: Las recetas secretas -->
-            <div class="dat-card">
-                <div class="dat-icon">📜</div>
-                <h3>Recetas con Historia</h3>
-                <p>Muchas de las variedades que disfrutas hoy están hechas con recetas familiares que se han cuidado y transmitido por años.</p>
+            <!-- Tarjeta 3 -->
+            <div class="dat-card" onclick="this.classList.toggle('activa')">
+                <div class="dat-card-frente">
+                    <div class="dat-icon"><i class="fas fa-scroll"></i></div>
+                    <h3>Recetas con Historia</h3>
+                </div>
+                <div class="dat-card-reverso">
+                    <div class="rev-icon"><i class="fas fa-scroll"></i></div>
+                    <h3>Recetas con Historia</h3>
+                    <p>Muchas de las variedades que disfrutas hoy están hechas con recetas familiares que se han cuidado y transmitido por años.</p>
+                </div>
             </div>
 
-            <!-- Tarjeta 4: El toque local (Reynosa) -->
-            <div class="dat-card">
-                <div class="dat-icon">🌵</div>
-                <h3>Orgullo de Reynosa</h3>
-                <p>Nacimos y crecimos en Reynosa, Tamaulipas. Somos un negocio local y familiar impulsado por adultos mayores.</p>
+            <!-- Tarjeta 4 -->
+            <div class="dat-card" onclick="this.classList.toggle('activa')">
+                <div class="dat-card-frente">
+                    <div class="dat-icon"><i class="fas fa-leaf"></i></div>
+                    <h3>Orgullo de Reynosa</h3>
+                </div>
+                <div class="dat-card-reverso">
+                    <div class="rev-icon"><i class="fas fa-leaf"></i></div>
+                    <h3>Orgullo de Reynosa</h3>
+                    <p>Nacimos y crecimos en Reynosa, Tamaulipas. Somos un negocio local y familiar impulsado por adultos mayores.</p>
+                </div>
             </div>
         </div>
+
+        <!-- CARRUSEL DE GALERÍA -->
+        <div class="galeria-seccion">
+            <div class="galeria-encabezado">
+                <h2 class="galeria-titulo">Galería</h2>
+                <div class="galeria-controles">
+                    <button class="galeria-btn" id="galeriaPrev" aria-label="Anterior">&#8249;</button>
+                    <button class="galeria-btn" id="galeriaNex" aria-label="Siguiente">&#8250;</button>
+                </div>
+            </div>
+
+            <div class="galeria-pista-wrap">
+                <div class="galeria-pista" id="galeriaPista">
+                    <div class="galeria-card">
+                        <img src="assets/img4.jpg" alt="Pan artesanal Baker" loading="lazy">
+                        <div class="galeria-card-label">Pan Artesanal</div>
+                    </div>
+                    <div class="galeria-card">
+                        <img src="assets/img5.jpg" alt="Variedad Baker" loading="lazy">
+                        <div class="galeria-card-label">Nuestra Variedad</div>
+                    </div>
+                    <div class="galeria-card">
+                        <img src="assets/img6.jpg" alt="Tradición Baker" loading="lazy">
+                        <div class="galeria-card-label">Tradición</div>
+                    </div>
+                    <div class="galeria-card">
+                        <img src="assets/img7.jpg" alt="Pan recién horneado" loading="lazy">
+                        <div class="galeria-card-label">Recién Horneado</div>
+                    </div>
+                    <div class="galeria-card">
+                        <img src="assets/img8.jpg" alt="Sabor casero" loading="lazy">
+                        <div class="galeria-card-label">Sabor Casero</div>
+                    </div>
+                    <div class="galeria-card">
+                        <img src="assets/img9.jpg" alt="Hecho con amor" loading="lazy">
+                        <div class="galeria-card-label">Hecho con Amor</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Puntos indicadores -->
+            <div class="galeria-puntos" id="galeriaPuntos"></div>
+        </div>
+
     </section>
 
     <!-- Contenedor de copyright -->
@@ -106,8 +221,18 @@
             <div class="footer-column">
                 <h3>Inicio</h3>
                 <ul>
-                    <li><a href="index.html#catalogo">Categorías</a></li>
-                    <li><a href="index.html#productos">Productos</a></li>
+                    <li class="cate-dropdown"> 
+                        <a href="#" class="enlace-normal" onclick="event.preventDefault();">Categorías ▾</a>
+                        
+                        <div class="footer-subcategorias">
+                            <a href="categorias.html?filtro=Pan dulce">Pan Dulce</a>
+                            <a href="categorias.html?filtro=Pan salado">Pan Salado</a>
+                            <a href="categorias.html?filtro=Pasteles">Pasteles</a>
+                            <a href="categorias.html?filtro=Pan sin gluten">Pan Sin Gluten</a>
+                            <a href="categorias.html?filtro=Galletas">Galletas</a>
+                        </div>
+                    </li>
+                    <li><a href="index.html?#productos">Productos</a></li>
                     <li><a href="historia.html">Sobre Nosotros</a></li>
                 </ul>
             </div>
@@ -135,10 +260,95 @@
         </div>
     </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
     <script src="script.js"></script>
-</body>
-</html>
+    <script src="scripFiltrado.js"></script>
 
+    <script>
+    /* ====================================================
+       CARRUSEL PRINCIPAL (foto-1, foto-2, foto-3)
+       ==================================================== */
+    (function() {
+        var total = 3, contador = 1;
+        if (!document.getElementById('foto-1')) return;
+        setInterval(function() {
+            var actual = document.getElementById('foto-' + contador);
+            if (actual) actual.classList.remove('activa');
+            contador = (contador >= total) ? 1 : contador + 1;
+            var siguiente = document.getElementById('foto-' + contador);
+            if (siguiente) siguiente.classList.add('activa');
+        }, 2000);
+    })();
+
+    /* ====================================================
+       CARRUSEL GALERÍA
+       ==================================================== */
+    (function() {
+        var pista      = document.getElementById('galeriaPista');
+        var btnPrev    = document.getElementById('galeriaPrev');
+        var btnNex     = document.getElementById('galeriaNex');
+        var contenedor = document.getElementById('galeriaPuntos');
+        if (!pista) return;
+
+        var cards      = pista.querySelectorAll('.galeria-card');
+        var total      = cards.length;
+        var visible    = window.innerWidth < 640 ? 1 : window.innerWidth < 900 ? 2 : 3;
+        var maxIdx     = total - visible;
+        var actual     = 0;
+        var timer;
+
+        function anchoCard() {
+            if (!cards[0]) return 0;
+            var gap = 16;
+            return cards[0].offsetWidth + gap;
+        }
+
+        function crearPuntos() {
+            contenedor.innerHTML = '';
+            for (var i = 0; i <= maxIdx; i++) {
+                var d = document.createElement('button');
+                d.className = 'galeria-punto' + (i === 0 ? ' activo' : '');
+                d.setAttribute('aria-label', 'Ir a imagen ' + (i + 1));
+                (function(idx){ d.onclick = function(){ irA(idx); }; })(i);
+                contenedor.appendChild(d);
+            }
+        }
+
+        function actualizarPuntos() {
+            var puntos = contenedor.querySelectorAll('.galeria-punto');
+            puntos.forEach(function(p, i) {
+                p.classList.toggle('activo', i === actual);
+            });
+        }
+
+        function irA(idx) {
+            actual = Math.max(0, Math.min(idx, maxIdx));
+            pista.style.transform = 'translateX(-' + (actual * anchoCard()) + 'px)';
+            actualizarPuntos();
+        }
+
+        function autoPlay() {
+            timer = setInterval(function() {
+                irA(actual < maxIdx ? actual + 1 : 0);
+            }, 3500);
+        }
+
+        btnPrev.addEventListener('click', function() { irA(actual - 1); });
+        btnNex.addEventListener('click',  function() { irA(actual + 1); });
+
+        pista.parentElement.addEventListener('mouseenter', function() { clearInterval(timer); });
+        pista.parentElement.addEventListener('mouseleave', function() { autoPlay(); });
+
+        window.addEventListener('resize', function() {
+            visible = window.innerWidth < 640 ? 1 : window.innerWidth < 900 ? 2 : 3;
+            maxIdx  = total - visible;
+            actual  = Math.min(actual, maxIdx);
+            crearPuntos();
+            irA(actual);
+        });
+
+        crearPuntos();
+        autoPlay();
+    })();
+    </script>
 </body>
 </html>

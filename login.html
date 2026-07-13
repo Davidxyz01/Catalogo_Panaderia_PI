@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login-Bakery</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Login - Panadería</title>
+    <link rel="stylesheet" href="stylelogin.css">
 </head>
 <body class="login-html">
     <div class="login-container">
@@ -36,6 +36,7 @@
  
             if(usuarioValue === 'admin' && passwordValue === '1234') {
                 alert('Inicio de Sesión exitoso');
+                sessionStorage.setItem('adminLogueado', 'true');
                 window.location.href = 'paneladmin.html';
                 password.value = '';
                 usuario.value = '';
