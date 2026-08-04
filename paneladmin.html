@@ -46,6 +46,9 @@
                 <li class="sidebar-item" data-target="secAnadir" onclick="irASidebar('secAnadir')">
                     <i class="bi bi-plus-circle-fill"></i> Añadir producto
                 </li>
+                <li class="sidebar-item" data-target="secCategorias" onclick="irASidebar('secCategorias')">
+                    <i class="bi bi-tags-fill"></i> Categorías
+                </li>
                 <li class="sidebar-item sidebar-salir" onclick="cerrarSesionAdmin()">
                     <i class="bi bi-box-arrow-left"></i> Cerrar sesión
                 </li>
@@ -57,14 +60,6 @@
            ========================================================================== -->
         <div class="contenido-admin">
 
-            <!-- VISTA DE BIENVENIDA (se muestra solo al entrar al panel) -->
-            <div id="menuPanelAdmin">
-                <div class="text-center mb-5">
-                    <h2>Bienvenido al Panel de Control</h2>
-                    <p class="text-muted">Selecciona una operación en el menú para gestionar el catálogo</p>
-                </div>
-            </div>
-
             <!-- SECCIÓN: AÑADIR PRODUCTO (CON PREVISUALIZACIÓN DE IMAGEN) -->
             <div id="secAnadir" class="seccion-admin">
                 <h2 class="mb-4">Añadir Nuevo Producto</h2>
@@ -75,13 +70,15 @@
                 </div>
                 <div class="form-group">
                     <label>Categoría:</label>
-                    <select class="form-control" id="categoriaProducto">
-                        <option value="Pan dulce">Pan dulce</option>
-                        <option value="Pan salado">Pan salado</option>
-                        <option value="Pan sin gluten">Pan sin gluten</option>
-                        <option value="Pasteles">Pasteles</option>
-                        <option value="Galletas">Galletas</option>
-                    </select>
+                    <div class="categoria-selector" id="categoriaSelector">
+                        <button type="button" class="categoria-selector-boton" id="categoriaBoton">
+                            <span id="categoriaBotonTexto">Selecciona una categoría</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="categoria-selector-lista" id="categoriaLista"></div>
+                    </div>
+                    <input type="hidden" id="categoriaProducto">
+                    <p class="text-muted" style="font-size: 0.85rem; margin-top: 5px;">Elige una categoría.</p>
                 </div>
                 <div class="form-group">
                     <label>Precio ($):</label>
@@ -106,6 +103,23 @@
 
                 <button type="submit" class="btn-submit">Guardar en Catálogo</button>
             </form>
+        </div>
+
+        <!-- SECCIÓN: GESTIÓN DE CATEGORÍAS -->
+        <div id="secCategorias" class="seccion-admin" style="display:none;">
+            <h2 class="mb-4">Gestión de Categorías</h2>
+            <p class="text-muted" style="max-width:560px; margin-top:-10px; margin-bottom:20px;">
+                Las categorías que agregues aquí aparecen automáticamente al elegir categoría de un
+                producto, en los filtros del catálogo público y en cualquier otra parte del sitio
+                donde se listen categorías.
+            </p>
+
+            <div class="categorias-admin-nueva">
+                <input type="text" id="inputNuevaCategoriaAdmin" placeholder="Nombre de la nueva categoría (ej. Repostería sin azúcar)">
+                <button type="button" id="btnAgregarCategoriaAdmin">Agregar categoría</button>
+            </div>
+
+            <ul class="lista-categorias-admin" id="listaCategoriasAdmin"></ul>
         </div>
 
         <!-- SECCIÓN: VISUALIZAR PRODUCTOS -->
@@ -133,6 +147,7 @@
                         <th>Categoría</th>
                         <th>Precio</th>
                         <th>Estado</th>
+                        <th title="Mostrar en la página principal">Destacado</th>
                         <th>Acción</th>
                     </tr>
                 </thead>
@@ -156,13 +171,14 @@
 
                 <div class="form-group">
                     <label for="editCategoriaProducto">Categoría:</label>
-                    <select id="editCategoriaProducto" class="form-control" required>
-                        <option value="Pan dulce">Pan dulce</option>
-                        <option value="Pan salado">Pan salado</option>
-                        <option value="Pan sin gluten">Pan sin gluten</option>
-                        <option value="Pasteles">Pasteles</option>
-                        <option value="Galletas">Galletas</option>
-                    </select>
+                    <div class="categoria-selector" id="categoriaSelectorEdit">
+                        <button type="button" class="categoria-selector-boton" id="categoriaBotonEdit">
+                            <span id="categoriaBotonTextoEdit">Selecciona una categoría</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="categoria-selector-lista" id="categoriaListaEdit"></div>
+                    </div>
+                    <input type="hidden" id="editCategoriaProducto">
                 </div>
 
                 <div class="form-group">
@@ -206,10 +222,59 @@
 
     <!-- LÓGICA JAVASCRIPT NATIVO -->
 <script>
-        // Oculta la bienvenida y todas las secciones, y muestra solo la solicitada
-        function mostrarSeccion(idSeccion) {
-            document.getElementById('menuPanelAdmin').style.display = 'none';
+        // Sustituto de alert(): tarjeta propia (sin la frase "Esta página dice")
+        function mostrarAviso(mensaje, tipo) {
+            tipo = tipo || 'info';
+            let contenedor = document.getElementById('avisoToastContenedor');
+            if (!contenedor) {
+                contenedor = document.createElement('div');
+                contenedor.id = 'avisoToastContenedor';
+                contenedor.className = 'aviso-toast-contenedor';
+                document.body.appendChild(contenedor);
+            }
+            const iconos = { exito: '✓', error: '✕', info: 'i' };
+            const toast = document.createElement('div');
+            toast.className = 'aviso-toast aviso-' + tipo;
+            toast.innerHTML = '<span class="aviso-toast-icono">' + (iconos[tipo] || 'i') + '</span><span class="aviso-toast-texto"></span>';
+            toast.querySelector('.aviso-toast-texto').textContent = mensaje;
+            contenedor.appendChild(toast);
+            setTimeout(function() {
+                toast.classList.add('aviso-saliendo');
+                setTimeout(function() { toast.remove(); }, 280);
+            }, 3200);
+        }
 
+        // Sustituto de confirm(): modal propio, devuelve una Promise<boolean>
+        function mostrarConfirmacion(mensaje) {
+            return new Promise(function(resolve) {
+                const fondo = document.createElement('div');
+                fondo.className = 'aviso-confirm-fondo';
+                const caja = document.createElement('div');
+                caja.className = 'aviso-confirm-caja';
+                caja.innerHTML =
+                    '<p class="aviso-confirm-mensaje"></p>' +
+                    '<div class="aviso-confirm-botones">' +
+                        '<button type="button" class="aviso-confirm-btn aviso-btn-cancelar">Cancelar</button>' +
+                        '<button type="button" class="aviso-confirm-btn aviso-btn-aceptar">Aceptar</button>' +
+                    '</div>';
+                caja.querySelector('.aviso-confirm-mensaje').textContent = mensaje;
+                fondo.appendChild(caja);
+                document.body.appendChild(fondo);
+
+                function cerrar(resultado) {
+                    fondo.remove();
+                    resolve(resultado);
+                }
+                caja.querySelector('.aviso-btn-aceptar').addEventListener('click', function() { cerrar(true); });
+                caja.querySelector('.aviso-btn-cancelar').addEventListener('click', function() { cerrar(false); });
+                fondo.addEventListener('click', function(evento) {
+                    if (evento.target === fondo) cerrar(false);
+                });
+            });
+        }
+
+        // Oculta todas las secciones y muestra solo la solicitada
+        function mostrarSeccion(idSeccion) {
             const secciones = document.querySelectorAll('.seccion-admin');
             secciones.forEach(sec => sec.style.display = 'none');
 
@@ -235,6 +300,9 @@
             if (idSeccion === 'secAnadir' && typeof limpiarFormularioAnadir === 'function') {
                 limpiarFormularioAnadir();
             }
+            if (idSeccion === 'secCategorias' && typeof renderizarGestionCategorias === 'function') {
+                renderizarGestionCategorias();
+            }
         }
 
         // Atajo para navegar por id de sección, usado también fuera del menú lateral
@@ -244,12 +312,19 @@
             navegarSidebar(idSeccion, elemento);
         }
 
-        function cerrarSesionAdmin() {
-            if(confirm("¿Estás seguro de que deseas cerrar sesión del Panel Administrativo?")) {
+        async function cerrarSesionAdmin() {
+            const confirmado = await mostrarConfirmacion("¿Estás seguro de que deseas cerrar sesión del Panel Administrativo?");
+            if (confirmado) {
                 sessionStorage.removeItem('adminLogueado');
-                window.location.href = "index.html"; 
+                window.location.href = "index.html";
             }
         }
+
+        // Ya no hay pantalla de bienvenida: al entrar al panel se muestra
+        // directamente el inventario ("Visualizar y editar").
+        document.addEventListener('DOMContentLoaded', function() {
+            irASidebar('secVisualizar');
+        });
     </script>
 
     <script src="scriptBD.js"></script>

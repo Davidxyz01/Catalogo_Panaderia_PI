@@ -157,9 +157,27 @@ const PRODUCTOS_DE_MUESTRA = [
     }
 ];
 
+// Misma clave de localStorage que usa el panel de administración para marcar
+// productos como "destacados" (ícono de estrella). La página principal la lee
+// para decidir qué productos mostrar.
+const CLAVE_PRODUCTOS_DESTACADOS_HOME = "panaderiaProductosDestacados";
+function obtenerIdsDestacadosHome() {
+    try {
+        const guardados = JSON.parse(localStorage.getItem(CLAVE_PRODUCTOS_DESTACADOS_HOME) || "[]");
+        return Array.isArray(guardados) ? guardados.map(String) : [];
+    } catch (e) {
+        return [];
+    }
+}
+
 function cargarProductosCatalogo() {
     const contenedor = document.getElementById('contenedorTarjetasProductos');
     if (!contenedor) return;
+
+    // La página principal (index.html) solo debe mostrar los productos
+    // marcados como destacados desde el panel admin. El catálogo completo
+    // (categorias.html) sigue mostrando todo, sin este filtro.
+    const esPaginaPrincipal = document.body.classList.contains('pagina-principal');
 
     fetch('http://localhost:5000/api/productos')
         .then(respuesta => {
@@ -169,14 +187,41 @@ function cargarProductosCatalogo() {
         .then(productos => {
             // Si el backend está encendido pero la tabla aún no tiene productos,
             // igual mostramos el catálogo de muestra en vez de dejarlo vacío.
-            const listaAMostrar = (productos && productos.length > 0) ? productos : PRODUCTOS_DE_MUESTRA;
+            let listaAMostrar = (productos && productos.length > 0) ? productos : PRODUCTOS_DE_MUESTRA;
+
+            if (esPaginaPrincipal && listaAMostrar !== PRODUCTOS_DE_MUESTRA) {
+                const idsDestacados = obtenerIdsDestacadosHome();
+                listaAMostrar = listaAMostrar.filter(p => idsDestacados.includes(String(p.id || p.Id)));
+
+                if (listaAMostrar.length === 0) {
+                    mostrarMensajeSinDestacados();
+                    return;
+                }
+            }
+
             renderizarTarjetasProductos(listaAMostrar);
         })
         .catch(error => {
-            // El backend está apagado / no se pudo conectar: mostramos el catálogo de muestra.
+            // El backend está apagado / no se pudo conectar: mostramos el catálogo de
+            // muestra tal cual (sin filtrar por destacado, ya que estos productos de
+            // muestra no tienen ID administrable desde el panel).
             console.warn('No se pudo conectar con el servidor, mostrando catálogo de muestra:', error);
             renderizarTarjetasProductos(PRODUCTOS_DE_MUESTRA);
         });
+}
+
+// Mensaje amigable cuando la página principal aún no tiene ningún producto
+// marcado como destacado desde el panel de administración.
+function mostrarMensajeSinDestacados() {
+    const contenedor = document.getElementById('contenedorTarjetasProductos');
+    if (!contenedor) return;
+    contenedor.innerHTML = `
+        <div class="sin-destacados-mensaje" style="width:100%; text-align:center; padding: 40px 20px; color: var(--secondary, #545454);">
+            <i class="fas fa-star" style="font-size: 28px; color: #e8a33d; margin-bottom: 12px; display:block;"></i>
+            <p style="font-size: 16px; margin-bottom: 6px;">Aún no hay productos destacados para mostrar aquí.</p>
+            <p style="font-size: 14px;">Mientras tanto, puedes ver <a href="categorias.html">nuestro catálogo completo</a>.</p>
+        </div>
+    `;
 }
 
 // Pinta las tarjetas de producto en el contenedor. Recibe un arreglo de

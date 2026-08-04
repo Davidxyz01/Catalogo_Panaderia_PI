@@ -24,6 +24,29 @@
     </div>
 
     <script>
+        // Sustituto de alert(): muestra un mensaje propio (sin la frase
+        // "Esta página dice") como una tarjeta en la esquina superior derecha.
+        function mostrarAviso(mensaje, tipo) {
+            tipo = tipo || 'info';
+            let contenedor = document.getElementById('avisoToastContenedor');
+            if (!contenedor) {
+                contenedor = document.createElement('div');
+                contenedor.id = 'avisoToastContenedor';
+                contenedor.className = 'aviso-toast-contenedor';
+                document.body.appendChild(contenedor);
+            }
+            const iconos = { exito: '✓', error: '✕', info: 'i' };
+            const toast = document.createElement('div');
+            toast.className = 'aviso-toast aviso-' + tipo;
+            toast.innerHTML = '<span class="aviso-toast-icono">' + (iconos[tipo] || 'i') + '</span><span class="aviso-toast-texto"></span>';
+            toast.querySelector('.aviso-toast-texto').textContent = mensaje;
+            contenedor.appendChild(toast);
+            setTimeout(function() {
+                toast.classList.add('aviso-saliendo');
+                setTimeout(function() { toast.remove(); }, 280);
+            }, 3200);
+        }
+
         const form = document.getElementById('login-form');
         const usuario = document.getElementById('usuario');
         const password = document.getElementById('password');
@@ -35,14 +58,18 @@
             const passwordValue = password.value.trim();
  
             if(usuarioValue === 'admin' && passwordValue === '1234') {
-                alert('Inicio de Sesión exitoso');
+                mostrarAviso('Inicio de sesión exitoso', 'exito');
                 sessionStorage.setItem('adminLogueado', 'true');
-                window.location.href = 'paneladmin.html';
                 password.value = '';
                 usuario.value = '';
 
+                // Pequeña pausa para que el aviso alcance a verse antes de redirigir
+                setTimeout(function() {
+                    window.location.href = 'paneladmin.html';
+                }, 900);
+
             }else{
-                alert('Usuario o contraseña incorrectos');
+                mostrarAviso('Usuario o contraseña incorrectos', 'error');
  
                 password.value = '';
                 usuario.value = '';

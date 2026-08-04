@@ -531,4 +531,369 @@ body {
             text-align: center;
             padding: 20px;
         }
+
+        /* ==========================================================================
+           SELECTOR DE CATEGORÍA PERSONALIZADO (reemplaza el datalist nativo)
+           Desplegable propio, con opción de escribir categorías nuevas y
+           eliminar las que el admin haya agregado.
+           ========================================================================== */
+        .categoria-selector {
+            position: relative;
+        }
+
+        .categoria-selector-boton {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background-color: #ffffff;
+            font-family: inherit;
+            font-size: 1rem;
+            color: #4a3f35;
+            cursor: pointer;
+            text-align: left;
+            transition: border-color 0.2s ease;
+        }
+        .categoria-selector-boton:hover {
+            border-color: var(--primary);
+        }
+        .categoria-selector-boton.placeholder-activo span {
+            color: #6c757d;
+        }
+        .categoria-selector-boton i {
+            color: var(--secondary);
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+        }
+        .categoria-selector.abierto .categoria-selector-boton i {
+            transform: rotate(180deg);
+        }
+        .categoria-selector.abierto .categoria-selector-boton {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(212, 163, 115, 0.25);
+        }
+
+        .categoria-selector-lista {
+            display: none;
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+            z-index: 50;
+            max-height: 260px;
+            overflow-y: auto;
+            padding: 6px;
+        }
+        .categoria-selector.abierto .categoria-selector-lista {
+            display: block;
+        }
+
+        .categoria-opcion {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .categoria-opcion:hover {
+            background-color: #fdf5eb;
+        }
+        .categoria-opcion.seleccionada {
+            background-color: rgba(212, 163, 115, 0.18);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .categoria-opcion-eliminar {
+            background: none;
+            border: none;
+            color: var(--danger);
+            opacity: 0.55;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        .categoria-opcion-eliminar:hover {
+            opacity: 1;
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+
+        .categoria-selector-separador {
+            border-top: 1px solid #eee;
+            margin: 6px 2px;
+        }
+
+        .categoria-nueva-fila {
+            display: flex;
+            gap: 6px;
+            padding: 6px 2px 2px;
+        }
+        .categoria-nueva-fila input {
+            flex: 1;
+            min-width: 0;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+        .categoria-nueva-fila input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .categoria-nueva-fila button {
+            background-color: var(--primary);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 0 14px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .categoria-nueva-fila button:hover {
+            background-color: #b98453;
+        }
         
+/* ==========================================================================
+   AVISOS PROPIOS (reemplazan alert()/confirm() nativos del navegador)
+   ========================================================================== */
+.aviso-toast-contenedor {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 340px;
+}
+
+.aviso-toast {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--light, #FDF5EB);
+    color: var(--dark, #1E1916);
+    border-radius: 8px;
+    padding: 14px 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    border-left: 5px solid var(--primary, #d4a373);
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    opacity: 0;
+    transform: translateX(40px);
+    animation: aviso-entrar 0.35s ease forwards;
+}
+
+.aviso-toast.aviso-saliendo { animation: aviso-salir 0.3s ease forwards; }
+.aviso-toast.aviso-exito { border-left-color: #5c8a52; }
+.aviso-toast.aviso-error { border-left-color: #c2492f; }
+
+.aviso-toast-icono {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 13px;
+    color: #fff;
+    background: var(--primary, #d4a373);
+}
+
+.aviso-toast.aviso-exito .aviso-toast-icono { background: #5c8a52; }
+.aviso-toast.aviso-error .aviso-toast-icono { background: #c2492f; }
+
+.aviso-toast-texto { flex: 1; padding-top: 2px; }
+
+@keyframes aviso-entrar {
+    from { opacity: 0; transform: translateX(40px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes aviso-salir {
+    from { opacity: 1; transform: translateX(0); }
+    to   { opacity: 0; transform: translateX(40px); }
+}
+
+/* ---------- Modal de confirmación (reemplazo de confirm()) ---------- */
+.aviso-confirm-fondo {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 12, 6, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+    opacity: 0;
+    animation: aviso-fondo-entrar 0.2s ease forwards;
+    padding: 20px;
+}
+@keyframes aviso-fondo-entrar { to { opacity: 1; } }
+
+.aviso-confirm-caja {
+    background: var(--light, #FDF5EB);
+    color: var(--dark, #1E1916);
+    border-radius: 10px;
+    padding: 26px 24px 20px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    transform: scale(0.9);
+    animation: aviso-caja-entrar 0.25s ease forwards;
+    font-family: 'Roboto', sans-serif;
+}
+@keyframes aviso-caja-entrar { to { transform: scale(1); } }
+
+.aviso-confirm-mensaje { font-size: 15px; line-height: 1.5; margin-bottom: 22px; }
+
+.aviso-confirm-botones { display: flex; gap: 12px; justify-content: center; }
+
+.aviso-confirm-btn {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.aviso-confirm-btn.aviso-btn-cancelar { background: #e5ddd3; color: var(--dark, #1E1916); }
+.aviso-confirm-btn.aviso-btn-cancelar:hover { background: #d8cebf; }
+.aviso-confirm-btn.aviso-btn-aceptar { background: var(--primary, #d4a373); color: #fff; }
+.aviso-confirm-btn.aviso-btn-aceptar:hover { opacity: 0.9; }
+
+/* ==========================================================================
+   MÓDULO: GESTIÓN DE CATEGORÍAS (sección propia del sidebar)
+   ========================================================================== */
+.categorias-admin-nueva {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+    max-width: 460px;
+}
+
+.categorias-admin-nueva input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.categorias-admin-nueva input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.categorias-admin-nueva button {
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+    .categorias-admin-nueva {
+        flex-direction: column;
+        max-width: 100%;
+    }
+    .categorias-admin-nueva button {
+        width: 100%;
+    }
+}
+
+.categorias-admin-nueva button:hover { opacity: 0.9; }
+
+.lista-categorias-admin {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+}
+
+.categoria-admin-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 16px 18px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.categoria-admin-item-nombre {
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.categoria-admin-item-contador {
+    font-size: 12.5px;
+    color: var(--secondary);
+    margin-left: 8px;
+    font-weight: 400;
+}
+
+.categoria-admin-item-eliminar {
+    background: none;
+    border: none;
+    color: var(--danger);
+    cursor: pointer;
+    font-size: 15px;
+    padding: 6px 8px;
+    border-radius: 4px;
+}
+
+.categoria-admin-item-eliminar:hover { background: rgba(220, 53, 69, 0.1); }
+
+.categorias-admin-vacio {
+    color: var(--secondary);
+    font-style: italic;
+}
+
+/* ==========================================================================
+   ESTRELLA "PRODUCTO DESTACADO" (columna de la tabla de inventario)
+   ========================================================================== */
+.btn-destacado {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 19px;
+    color: #d9d0c3;
+    transition: color 0.15s ease, transform 0.15s ease;
+    padding: 4px;
+}
+
+.btn-destacado:hover { transform: scale(1.15); }
+
+.btn-destacado.activo {
+    color: #e8a33d;
+}

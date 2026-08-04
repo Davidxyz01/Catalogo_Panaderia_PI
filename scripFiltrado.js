@@ -4,6 +4,20 @@
 
 let filtrosLateralesListos = false;
 
+// Lee la misma lista de categorías que administra el panel de admin
+// (módulo "Categorías" y los selectores de Añadir/Editar producto), para que
+// una categoría recién creada aparezca aquí de inmediato aunque todavía
+// ningún producto la use.
+const CLAVE_CATEGORIAS_GESTIONABLES_CATALOGO = "panaderiaCategoriasGestionables";
+function obtenerCategoriasRegistradasCatalogo() {
+    try {
+        const guardadas = JSON.parse(localStorage.getItem(CLAVE_CATEGORIAS_GESTIONABLES_CATALOGO) || "[]");
+        return Array.isArray(guardadas) ? guardadas : [];
+    } catch (e) {
+        return [];
+    }
+}
+
 // Se ejecuta cada vez que el contenedor de tarjetas cambia (cuando script.js
 // termina de inyectar los productos desde la API). Construye el panel de
 // categorías con conteos reales y ajusta el slider de precio al catálogo.
@@ -26,17 +40,26 @@ function inicializarFiltrosLaterales() {
         if (precio > precioMax) precioMax = precio;
     });
 
+    // Unimos las categorías "en uso" (con productos) con TODAS las categorías
+    // registradas en el panel admin, para que las recién creadas ya aparezcan
+    // como opción de filtro aunque todavía tengan 0 productos.
+    const categoriasCombinadas = new Set([
+        ...Object.keys(conteoCategorias),
+        ...obtenerCategoriasRegistradasCatalogo()
+    ]);
+
     if (!filtrosLateralesListos) {
         // --- Pintamos los checkboxes de categoría (una sola vez) ---
         listaCategorias.innerHTML = "";
-        Object.keys(conteoCategorias).sort().forEach(categoria => {
+        Array.from(categoriasCombinadas).sort().forEach(categoria => {
+            const cantidad = conteoCategorias[categoria] || 0;
             const li = document.createElement('li');
             li.className = 'filtro-item-categoria';
             li.innerHTML = `
                 <label>
                     <input type="checkbox" class="check-categoria-filtro" value="${categoria}">
                     <span class="filtro-item-nombre">${categoria}</span>
-                    <span class="filtro-contador">(${conteoCategorias[categoria]})</span>
+                    <span class="filtro-contador">(${cantidad})</span>
                 </label>
             `;
             listaCategorias.appendChild(li);
